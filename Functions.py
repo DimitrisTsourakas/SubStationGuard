@@ -1,10 +1,8 @@
-import sys
 import matplotlib.pyplot as plt
 import numpy as np
 import ast
-from pynverse import inversefunc
+from scipy.optimize import root_scalar
 from datetime import datetime
-import math
 
 def startLog():
     """ Function to start a log and display initial information for the execution
@@ -84,7 +82,7 @@ def logError(message):
     timestamp_with_millis_str = f"{timestamp_str}.{millis_str}"
 
     # Print the timestamp string with milliseconds
-    print(f"<W {timestamp_with_millis_str}: {message}")
+    print(f"<E {timestamp_with_millis_str}: {message}")
 
 def maxGridCurrent(If, Df, Sf):
     """ Calculates the maximum grid current (IG) considering symmetrical ground fault current (If),
@@ -184,17 +182,39 @@ def groundPotentialRise(IG, kg, ρ):
 
     return GPR
 
+def inverseFunc(function, value):
+    """ Define a function that returns the root of f(x) - value = 0
+
+    Arguments: 
+        function (lambda function): function to be inversed
+        value (real): value at which to evaluate the inverse
+    
+    Returns: 
+        Inversed value (real) 
+    """
+    return root_scalar(lambda x: function(x) - value, bracket=[0.01, 10000]).root
+
 def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, IB, ZT, HF, BF, F, Vlim):
-    """ Calculates the critical separation distance considering a factor related to tolerable 
-    electric shock energy (k) taking values of 0.116 and 0.157As0.5 for people weighing 50kg and 
-    70kg, respectively, ground potential rise (GPR) and duration of the electric shock current (ts) 
-    Formula: xcr = ksp-1(Rb * k / [GPR * √ts])
+    """ Calculates the critical separation distance considering the inverse function of surface 
+    potential proportionality factor, ground potential rise (GPR) and max allowable touch 
+    voltage (V). Maximum voltage is calculated according to the type of the System and the 
+    Safety Standard applied. 
+    Formula: xcr = ksp-1(V / GPR)
 
     Arguments:
+        systemType (string): System Type of MV/LV substation
+        safetyStandard (string): Safety Standard applied
+        GPR (real): Ground potential rise (A m^-1 Ω)
         Rb (real): Resistance of the human body (Ω)
         k (real): Factor related to tolerable electric shock energy (As^0.5)
-        GPR (real): Ground potential rise (A m^-1 Ω)
         ts (real): Duration of the electric shock current (s)
+        Rb (real): Resistance of the human body (Ω)
+        IB (real): Body current limit (A)
+        ZT (real): Body impedance (Ω)
+        HF (real): Heart current factor (p.u.)
+        BF (real): Body factor (p.u.)
+        F (real): Constant F (p.u.) 
+        Vlim (real): Voltage limit (V)
         ksp(x) (function in terms of x): surface potential proportionality factor expressed as a
                 function of separation distance, x (m), accounting for the effect of grounding 
                 system geometry on Vsp
@@ -202,8 +222,6 @@ def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, 
     Returns:
         xcr (real): Critical Separation Distance (m)
     """
-    # Evaluate Inverse function for surface potential proportionality in terms of separation distance, x (m)
-    kspInverse = inversefunc(ksp, accuracy=6)
 
     # Critical Seperation Distance Evaluation for System Type "TN" and Safety Standard "IEEE Std 80"
     if systemType == "TN" and safetyStandard == "0":
@@ -218,7 +236,7 @@ def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, 
         logInfo(f"GPR: {GPR}V")
         
         # Apply Formula 
-        x_critical = kspInverse(EmmTouch / GPR)
+        x_critical = inverseFunc(ksp, EmmTouch / GPR)
     
     # Critical Seperation Distance Evaluation for System Type "TN" and Safety Standard "CENELEC EN 50522"
     elif systemType == "TN" and safetyStandard == "1":
@@ -234,7 +252,7 @@ def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, 
         logInfo(f"GPR: {GPR}V")
 
         # Apply Formula
-        x_critical = kspInverse(UTp * F / GPR)
+        x_critical = inverseFunc(ksp, UTp * F / GPR)
 
     # Critical Seperation Distance Evaluation for System Type "TT" and Safety Standard "CENELEC EN 50522"
     else:
@@ -246,7 +264,7 @@ def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, 
         logInfo(f"GPR: {GPR}V")
 
         # Apply Formula
-        x_critical = kspInverse(Vlim / GPR)
+        x_critical = inverseFunc(ksp, Vlim / GPR)
 
     # Logging after applying formula
     logInfo("Output after calculation:")
@@ -440,17 +458,23 @@ def functionParameterInput(parameterDescription):
     while True:
         parameter = input()
         # Validation of user input function
-        function = "lambda x: " + parameter + " if x > 0 else 0"
-        if is_valid_function(function):
+        functionString = "lambda x: " + parameter + " if x > 0 else 0"
+        if isValidFunction(functionString):
             logInfo(f"{parameterDescription} set as function f(x)={parameter}.")
             break
         logError(f"Input function {parameter} is not a valid function. Please provide a valid function in terms of x:")
+    
+    # Transformation of string into lambda function
+    function = eval(functionString)
         
     return function
 
 def promptYesNo():
     """ Function that prompts from user to provide a Yes or No input. 
     The function returns a string with the input provided by the user.
+
+    Returns:
+        answer (string): "Yes" or "No" strings provided by user 
     """
     answer = input()
     while answer not in ["Yes", "No"]:
@@ -501,8 +525,7 @@ def parameterSetup(systemType, safetyStandard):
     # Insert Geometric proportionality factor
     kg = floatParameterInput("Geometric proportionality factor", "m^-1")
     # Insert Surface potential proportionality factor function
-    ksp_string = functionParameterInput("Surface potential proportionality factor")
-    ksp = eval(ksp_string)
+    ksp = functionParameterInput("Surface potential proportionality factor")
 
     # Parameters Setup for System Type "TN" and Safety Standard "IEEE Std 80"
     if systemType == "TN" and safetyStandard == "0":
@@ -585,6 +608,8 @@ def plotCreation(systemType, safetyStandard, kg, ksp, Rb, k, IB, ZT, HF, BF, F, 
     displays in the graph, the case that user defined by selecting a Soil Resistivity value.
 
     Arguments:
+        systemType (string): System Type of MV/LV substation
+        safetyStandard (string): Safety Standard applied
         kg (real): Geometric proportionality factor (m^-1)
         ksp(x) (lambda function): surface potential proportionality factor expressed as a function
                 of separation distance, x (m), accounting for the effect of grounding system
@@ -626,7 +651,7 @@ def plotCreation(systemType, safetyStandard, kg, ksp, Rb, k, IB, ZT, HF, BF, F, 
 
     title = "Critical separation distance between MV/LV substation and LV neutral grounding configurations"
     xLabel = "Separation Distance, x (m)"
-    x_values = np.linspace(0, 100, 1000000)
+    x_values = np.linspace(0, 500, 1000000)
     y_values = [formula(x) for x in x_values]
 
     # Create the plot
@@ -663,12 +688,12 @@ def plotCreation(systemType, safetyStandard, kg, ksp, Rb, k, IB, ZT, HF, BF, F, 
     plt.annotate(f'ρ = {ρ}', xy=(-3, highlight_y), xytext=(-5, 1.3 * highlight_y), arrowprops=dict(facecolor='black', arrowstyle='->'))
     plt.show()
 
-def is_valid_function(func_str):
+def isValidFunction(func_str):
     """ Validates if the provided string is a valid lambda function containing a single variable x.
     Function returns True if the function is valid and False if the function is invalid.
 
     Arguments:
-        func_str (lambda function): function in terms of x
+        func_str (string): string containing a lambda function in terms of x
 
     Returns: 
         True or False

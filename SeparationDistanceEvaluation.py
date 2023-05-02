@@ -1,4 +1,3 @@
-import sys
 import Functions as functions
 
 def main():
