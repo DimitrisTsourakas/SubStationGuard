@@ -11,7 +11,7 @@ def main():
     safetyStandard = functions.safetyStandardSelection(systemType)
     
     # PHASE 3: Parameters Setup
-    kg, ksp, Rb, k, IB, ZT, HF, BF, F, Vlim, Rg, ρ, If, Sf, XR, tf, Df, IG = functions.parameterSetup(systemType, safetyStandard)
+    kg, ksp, Rb, k, IB, ZT, HF, BF, F, Vlim, Rg, ρ, If, Sf, X, R, tf, Df, IG = functions.parameterSetup(systemType, safetyStandard)
 
     # PHASE 4: Curve Creation
     functions.plotCreation(systemType, safetyStandard, kg, ksp, Rb, k, IB, ZT, HF, BF, F, Vlim, ρ, tf, IG)

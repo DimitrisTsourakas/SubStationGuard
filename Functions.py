@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import ast
+import  math
 from scipy.optimize import root_scalar
 from datetime import datetime
 
@@ -229,7 +230,7 @@ def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, 
         EmmTouch = maxAllowM2MTouchVoltLimit(ts, k, Rb)
 
         # Logging before applying formula
-        formula = "ksp-1(EmmTouch / GPR)"
+        formula = "xcr = ksp-1(EmmTouch / GPR)"
         logInfo(f"Staring calculation of {formula}")
         logInfo("Inputs before calculation:")
         logInfo(f"EmmTouch: {EmmTouch}V")
@@ -244,7 +245,7 @@ def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, 
         UTp = allowableTouchVoltage(IB, ZT, HF, BF)
         
         # Logging before applying formula
-        formula = "ksp-1(UTp * F / GPR)"
+        formula = "xcr = ksp-1(UTp * F / GPR)"
         logInfo(f"Staring calculation of {formula}")
         logInfo("Inputs before calculation:")
         logInfo(f"UTp: {UTp}V")
@@ -257,7 +258,7 @@ def criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, ts, ksp, 
     # Critical Seperation Distance Evaluation for System Type "TT" and Safety Standard "CENELEC EN 50522"
     else:
         # Logging before applying formula
-        formula = "ksp-1(Vlim / GPR)"
+        formula = "xcr = ksp-1(Vlim / GPR)"
         logInfo(f"Staring calculation of {formula}")
         logInfo("Inputs before calculation:")
         logInfo(f"Vlim: {Vlim}V")
@@ -335,32 +336,49 @@ def soilResistivity(Rg, kg):
 
     return ρ
 
-def decrementFactor(XR, tf):
+def decrementFactor(X, R, tf):
     """ Calculates the Decrement Factor accounting for the dc offset of the fault current 
-    considering the X/R ratio (XR) and the fault duration (tf)
-    Formula: Df = XR * tf
+    considering the X/R ratio and the fault duration (tf)
+    Formula1: Ta = X / (2 * math.pi * 60 * R)
+    Formula2: Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf)
 
     Arguments: 
-        XR (real): X/R ratio (s^-1)
+        X (real): Inductive reactance (Ω)
+        R (real): System resistance at fault (Ω)
         tf (real): Fault duration (s)
 
     Returns
         Df (real): Decrement Factor (p.u.)
     """
     # Logging before applying formula
-    formula = "Df = XR * tf"
-    logInfo(f"Staring calculation of {formula}")
+    formula1 = "Ta = X / (2 * math.pi * 60 * R)"
+    logInfo(f"Staring calculation of {formula1}")
     logInfo("Inputs before calculation:")
-    logInfo(f"XR: {XR}s^-1")
+    logInfo(f"X: {X}Ω")
+    logInfo(f"R: {R}Ω")
+
+    # Apply formula
+    Ta = X / (2 * math.pi * 60 * R)
+
+    # Logging after applying formula
+    logInfo("Output after calculation:")
+    logInfo(f"Ta: {Ta}s")
+    logInfo(f"Calculation of {formula1} finished successfully")
+
+    # Logging before applying formula
+    formula2 = "Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf )"
+    logInfo(f"Staring calculation of {formula2}")
+    logInfo("Inputs before calculation:")
+    logInfo(f"Ta: {Ta}s")
     logInfo(f"tf: {tf}s")
     
     # Apply formula
-    Df = XR * tf
+    Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf)
 
     # Logging after applying formula
     logInfo("Output after calculation:")
     logInfo(f"Df: {Df}p.u.")
-    logInfo(f"Calculation of {formula} finished successfully")
+    logInfo(f"Calculation of {formula2} finished successfully")
 
     return Df
 
@@ -509,7 +527,8 @@ def parameterSetup(systemType, safetyStandard):
         ρ (real): Soil Resistivity (Ωm)
         If (real): Symmetrical Ground Fault Current (A)
         Sf (real): Fault Current Division Factor (p.u.)
-        XR (real): Symmetrical Ground Fault Current (s^-1)
+        X (real): Inductive reactance (Ω)
+        R (real): System resistance at fault (Ω)
         tf (real): Fault Duration (s)
         Df (real): Decrement Factor (p.u.)
         IG (real): Maximum Grid Current (A)
@@ -520,7 +539,7 @@ def parameterSetup(systemType, safetyStandard):
     logInfo("")
 
     # Initialize Parameters
-    Rb, k, IB, ZT, HF, BF, F, Vlim, Rg, ρ, If, Sf, XR, tf, Df = [0.0] * 15
+    Rb, k, IB, ZT, HF, BF, F, Vlim, Rg, ρ, If, Sf, X, R, tf, Df = [0.0] * 16
 
     # Insert Geometric proportionality factor
     kg = floatParameterInput("Geometric proportionality factor", "m^-1")
@@ -583,12 +602,14 @@ def parameterSetup(systemType, safetyStandard):
         eval_Df = promptYesNo()
         logInfo(f"You selected option {eval_Df}.")
         if eval_Df == "Yes":
-            # Insert X/R Ratio
-            XR = floatParameterInput("Symmetrical Ground Fault Current", "s^-1")
+            # Insert Inductive Reactance
+            X = floatParameterInput("Inductive Reactance", "Ω")
+            # Insert System Resistance at fault
+            R = floatParameterInput("System resistance at fault", "Ω")
             ## Insert Fault Duration
             #tf = floatParameterInput("Fault Duration", "s")
             # Calculate Decrement Factor
-            Df = decrementFactor(XR, tf)
+            Df = decrementFactor(X, R, tf)
         else:
             # Insert Decrement Factor
             Df = floatParameterInput("Decrement Factor", "p.u.")
@@ -599,7 +620,7 @@ def parameterSetup(systemType, safetyStandard):
         # Insert Maximum Grid Current
         IG = floatParameterInput("Maximum Grid Current", "A")
 
-    return kg, ksp, Rb, k, IB, ZT, HF, BF, F, Vlim, Rg, ρ, If, Sf, XR, tf, Df, IG
+    return kg, ksp, Rb, k, IB, ZT, HF, BF, F, Vlim, Rg, ρ, If, Sf, X, R, tf, Df, IG
 
 def plotCreation(systemType, safetyStandard, kg, ksp, Rb, k, IB, ZT, HF, BF, F, Vlim, ρ, tf, IG):
     """ Main function responsible for the creation of plots. Function will setup plot parameters
