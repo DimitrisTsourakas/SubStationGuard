@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import ast
-import  math
+import math
 from scipy.optimize import root_scalar
 from datetime import datetime
 
