@@ -383,7 +383,7 @@ def decrementFactor(X, R, tf):
     return Df
 
 def systemTypeSelection():
-    """ Main Function for the selction of the System Type of MV/LV substation. Two system types can
+    """ Main Function for the selection of the System Type of MV/LV substation. Two system types can
     be selected, TN or TT.
 
     Returns:
