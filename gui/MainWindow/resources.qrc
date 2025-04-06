@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/info-tooltip.png</file>
+        <file>images/SubStationGuard.png</file>
+    </qresource>
+</RCC>
