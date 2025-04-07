@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(1156, 762)
+        MainWindow.resize(1146, 798)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -128,161 +128,15 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayoutWidget = QWidget(self.centralwidget)
         self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(20, 10, 1121, 631))
+        self.gridLayoutWidget.setGeometry(QRect(20, 10, 1111, 681))
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.groupBox_7 = QGroupBox(self.gridLayoutWidget)
-        self.groupBox_7.setObjectName(u"groupBox_7")
-        self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
-        self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(20, 20, 351, 268))
-        self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_7)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.formLayout_22 = QFormLayout()
-        self.formLayout_22.setObjectName(u"formLayout_22")
-        self.formLayout_22.setVerticalSpacing(0)
-        self.label_40 = QLabel(self.verticalLayoutWidget_7)
-        self.label_40.setObjectName(u"label_40")
-
-        self.formLayout_22.setWidget(0, QFormLayout.LabelRole, self.label_40)
-
-        self.comboBox_6 = QComboBox(self.verticalLayoutWidget_7)
-        self.comboBox_6.addItem("")
-        self.comboBox_6.addItem("")
-        self.comboBox_6.setObjectName(u"comboBox_6")
-        self.comboBox_6.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.formLayout_22.setWidget(1, QFormLayout.LabelRole, self.comboBox_6)
-
-        self.toolButton_43 = QToolButton(self.verticalLayoutWidget_7)
-        self.toolButton_43.setObjectName(u"toolButton_43")
-        self.toolButton_43.setMaximumSize(QSize(30, 30))
-        icon1 = QIcon()
-        icon1.addFile(u":/images/images/info-tooltip.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.toolButton_43.setIcon(icon1)
-        self.toolButton_43.setIconSize(QSize(40, 40))
-        self.toolButton_43.setCheckable(False)
-        self.toolButton_43.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_43.setAutoRaise(False)
-        self.toolButton_43.setArrowType(Qt.NoArrow)
-
-        self.formLayout_22.setWidget(0, QFormLayout.FieldRole, self.toolButton_43)
-
-
-        self.verticalLayout_7.addLayout(self.formLayout_22)
-
-        self.formLayout_23 = QFormLayout()
-        self.formLayout_23.setObjectName(u"formLayout_23")
-        self.formLayout_23.setVerticalSpacing(0)
-        self.label_41 = QLabel(self.verticalLayoutWidget_7)
-        self.label_41.setObjectName(u"label_41")
-
-        self.formLayout_23.setWidget(0, QFormLayout.LabelRole, self.label_41)
-
-        self.lineEdit_20 = QLineEdit(self.verticalLayoutWidget_7)
-        self.lineEdit_20.setObjectName(u"lineEdit_20")
-        self.lineEdit_20.setClearButtonEnabled(True)
-
-        self.formLayout_23.setWidget(1, QFormLayout.LabelRole, self.lineEdit_20)
-
-        self.toolButton_44 = QToolButton(self.verticalLayoutWidget_7)
-        self.toolButton_44.setObjectName(u"toolButton_44")
-        self.toolButton_44.setMaximumSize(QSize(30, 30))
-        self.toolButton_44.setIcon(icon1)
-        self.toolButton_44.setIconSize(QSize(40, 40))
-        self.toolButton_44.setCheckable(False)
-        self.toolButton_44.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_44.setAutoRaise(False)
-        self.toolButton_44.setArrowType(Qt.NoArrow)
-
-        self.formLayout_23.setWidget(0, QFormLayout.FieldRole, self.toolButton_44)
-
-        self.label_42 = QLabel(self.verticalLayoutWidget_7)
-        self.label_42.setObjectName(u"label_42")
-
-        self.formLayout_23.setWidget(1, QFormLayout.FieldRole, self.label_42)
-
-
-        self.verticalLayout_7.addLayout(self.formLayout_23)
-
-        self.formLayout_27 = QFormLayout()
-        self.formLayout_27.setObjectName(u"formLayout_27")
-        self.formLayout_27.setVerticalSpacing(0)
-        self.label_43 = QLabel(self.verticalLayoutWidget_7)
-        self.label_43.setObjectName(u"label_43")
-
-        self.formLayout_27.setWidget(0, QFormLayout.LabelRole, self.label_43)
-
-        self.lineEdit_21 = QLineEdit(self.verticalLayoutWidget_7)
-        self.lineEdit_21.setObjectName(u"lineEdit_21")
-        self.lineEdit_21.setClearButtonEnabled(True)
-
-        self.formLayout_27.setWidget(1, QFormLayout.LabelRole, self.lineEdit_21)
-
-        self.toolButton_45 = QToolButton(self.verticalLayoutWidget_7)
-        self.toolButton_45.setObjectName(u"toolButton_45")
-        self.toolButton_45.setMaximumSize(QSize(30, 30))
-        self.toolButton_45.setIcon(icon1)
-        self.toolButton_45.setIconSize(QSize(40, 40))
-        self.toolButton_45.setCheckable(False)
-        self.toolButton_45.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_45.setAutoRaise(False)
-        self.toolButton_45.setArrowType(Qt.NoArrow)
-
-        self.formLayout_27.setWidget(0, QFormLayout.FieldRole, self.toolButton_45)
-
-        self.label_44 = QLabel(self.verticalLayoutWidget_7)
-        self.label_44.setObjectName(u"label_44")
-
-        self.formLayout_27.setWidget(1, QFormLayout.FieldRole, self.label_44)
-
-
-        self.verticalLayout_7.addLayout(self.formLayout_27)
-
-        self.formLayout_28 = QFormLayout()
-        self.formLayout_28.setObjectName(u"formLayout_28")
-        self.formLayout_28.setVerticalSpacing(0)
-        self.label_45 = QLabel(self.verticalLayoutWidget_7)
-        self.label_45.setObjectName(u"label_45")
-
-        self.formLayout_28.setWidget(0, QFormLayout.LabelRole, self.label_45)
-
-        self.lineEdit_28 = QLineEdit(self.verticalLayoutWidget_7)
-        self.lineEdit_28.setObjectName(u"lineEdit_28")
-        self.lineEdit_28.setClearButtonEnabled(True)
-
-        self.formLayout_28.setWidget(1, QFormLayout.LabelRole, self.lineEdit_28)
-
-        self.toolButton_46 = QToolButton(self.verticalLayoutWidget_7)
-        self.toolButton_46.setObjectName(u"toolButton_46")
-        self.toolButton_46.setMaximumSize(QSize(30, 30))
-        self.toolButton_46.setIcon(icon1)
-        self.toolButton_46.setIconSize(QSize(40, 40))
-        self.toolButton_46.setCheckable(False)
-        self.toolButton_46.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_46.setAutoRaise(False)
-        self.toolButton_46.setArrowType(Qt.NoArrow)
-
-        self.formLayout_28.setWidget(0, QFormLayout.FieldRole, self.toolButton_46)
-
-        self.label_46 = QLabel(self.verticalLayoutWidget_7)
-        self.label_46.setObjectName(u"label_46")
-
-        self.formLayout_28.setWidget(1, QFormLayout.FieldRole, self.label_46)
-
-
-        self.verticalLayout_7.addLayout(self.formLayout_28)
-
-
-        self.gridLayout.addWidget(self.groupBox_7, 0, 1, 1, 1)
-
         self.groupBox_8 = QGroupBox(self.gridLayoutWidget)
         self.groupBox_8.setObjectName(u"groupBox_8")
         self.verticalLayoutWidget_8 = QWidget(self.groupBox_8)
         self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(20, 20, 329, 200))
+        self.verticalLayoutWidget_8.setGeometry(QRect(20, 20, 329, 220))
         self.verticalLayout_8 = QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -300,6 +154,8 @@ class Ui_MainWindow(object):
         self.toolButton_47 = QToolButton(self.verticalLayoutWidget_8)
         self.toolButton_47.setObjectName(u"toolButton_47")
         self.toolButton_47.setMaximumSize(QSize(30, 30))
+        icon1 = QIcon()
+        icon1.addFile(u":/images/images/info-tooltip.png", QSize(), QIcon.Normal, QIcon.Off)
         self.toolButton_47.setIcon(icon1)
         self.toolButton_47.setIconSize(QSize(40, 40))
         self.toolButton_47.setCheckable(False)
@@ -348,6 +204,13 @@ class Ui_MainWindow(object):
 
         self.formLayout_30.setWidget(1, QFormLayout.FieldRole, self.label_49)
 
+        self.label_61 = QLabel(self.verticalLayoutWidget_8)
+        self.label_61.setObjectName(u"label_61")
+        self.label_61.setEnabled(False)
+        self.label_61.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_30.setWidget(2, QFormLayout.LabelRole, self.label_61)
+
 
         self.verticalLayout_8.addLayout(self.formLayout_30)
 
@@ -358,12 +221,6 @@ class Ui_MainWindow(object):
         self.label_51.setObjectName(u"label_51")
 
         self.formLayout_31.setWidget(0, QFormLayout.LabelRole, self.label_51)
-
-        self.lineEdit_23 = QLineEdit(self.verticalLayoutWidget_8)
-        self.lineEdit_23.setObjectName(u"lineEdit_23")
-        self.lineEdit_23.setClearButtonEnabled(True)
-
-        self.formLayout_31.setWidget(1, QFormLayout.LabelRole, self.lineEdit_23)
 
         self.toolButton_49 = QToolButton(self.verticalLayoutWidget_8)
         self.toolButton_49.setObjectName(u"toolButton_49")
@@ -377,10 +234,23 @@ class Ui_MainWindow(object):
 
         self.formLayout_31.setWidget(0, QFormLayout.FieldRole, self.toolButton_49)
 
+        self.lineEdit_23 = QLineEdit(self.verticalLayoutWidget_8)
+        self.lineEdit_23.setObjectName(u"lineEdit_23")
+        self.lineEdit_23.setClearButtonEnabled(True)
+
+        self.formLayout_31.setWidget(1, QFormLayout.LabelRole, self.lineEdit_23)
+
         self.label_52 = QLabel(self.verticalLayoutWidget_8)
         self.label_52.setObjectName(u"label_52")
 
         self.formLayout_31.setWidget(1, QFormLayout.FieldRole, self.label_52)
+
+        self.label_60 = QLabel(self.verticalLayoutWidget_8)
+        self.label_60.setObjectName(u"label_60")
+        self.label_60.setEnabled(False)
+        self.label_60.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_31.setWidget(2, QFormLayout.LabelRole, self.label_60)
 
 
         self.verticalLayout_8.addLayout(self.formLayout_31)
@@ -388,155 +258,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.groupBox_8, 1, 0, 1, 1)
 
-        self.groupBox_12 = QGroupBox(self.gridLayoutWidget)
-        self.groupBox_12.setObjectName(u"groupBox_12")
-        self.verticalLayoutWidget_10 = QWidget(self.groupBox_12)
-        self.verticalLayoutWidget_10.setObjectName(u"verticalLayoutWidget_10")
-        self.verticalLayoutWidget_10.setGeometry(QRect(20, 20, 331, 268))
-        self.verticalLayout_10 = QVBoxLayout(self.verticalLayoutWidget_10)
-        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.formLayout_41 = QFormLayout()
-        self.formLayout_41.setObjectName(u"formLayout_41")
-        self.formLayout_41.setVerticalSpacing(0)
-        self.label_73 = QLabel(self.verticalLayoutWidget_10)
-        self.label_73.setObjectName(u"label_73")
-
-        self.formLayout_41.setWidget(0, QFormLayout.LabelRole, self.label_73)
-
-        self.toolButton_59 = QToolButton(self.verticalLayoutWidget_10)
-        self.toolButton_59.setObjectName(u"toolButton_59")
-        self.toolButton_59.setMaximumSize(QSize(30, 30))
-        self.toolButton_59.setIcon(icon1)
-        self.toolButton_59.setIconSize(QSize(40, 40))
-        self.toolButton_59.setCheckable(False)
-        self.toolButton_59.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_59.setAutoRaise(False)
-        self.toolButton_59.setArrowType(Qt.NoArrow)
-
-        self.formLayout_41.setWidget(0, QFormLayout.FieldRole, self.toolButton_59)
-
-        self.comboBox_16 = QComboBox(self.verticalLayoutWidget_10)
-        self.comboBox_16.addItem("")
-        self.comboBox_16.addItem("")
-        self.comboBox_16.setObjectName(u"comboBox_16")
-        self.comboBox_16.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.formLayout_41.setWidget(1, QFormLayout.LabelRole, self.comboBox_16)
-
-
-        self.verticalLayout_10.addLayout(self.formLayout_41)
-
-        self.formLayout_42 = QFormLayout()
-        self.formLayout_42.setObjectName(u"formLayout_42")
-        self.formLayout_42.setVerticalSpacing(0)
-        self.lineEdit_45 = QLineEdit(self.verticalLayoutWidget_10)
-        self.lineEdit_45.setObjectName(u"lineEdit_45")
-        self.lineEdit_45.setClearButtonEnabled(True)
-
-        self.formLayout_42.setWidget(1, QFormLayout.LabelRole, self.lineEdit_45)
-
-        self.label_74 = QLabel(self.verticalLayoutWidget_10)
-        self.label_74.setObjectName(u"label_74")
-
-        self.formLayout_42.setWidget(0, QFormLayout.LabelRole, self.label_74)
-
-        self.toolButton_60 = QToolButton(self.verticalLayoutWidget_10)
-        self.toolButton_60.setObjectName(u"toolButton_60")
-        self.toolButton_60.setMaximumSize(QSize(30, 30))
-        self.toolButton_60.setIcon(icon1)
-        self.toolButton_60.setIconSize(QSize(40, 40))
-        self.toolButton_60.setCheckable(False)
-        self.toolButton_60.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_60.setAutoRaise(False)
-        self.toolButton_60.setArrowType(Qt.NoArrow)
-
-        self.formLayout_42.setWidget(0, QFormLayout.FieldRole, self.toolButton_60)
-
-        self.label_75 = QLabel(self.verticalLayoutWidget_10)
-        self.label_75.setObjectName(u"label_75")
-
-        self.formLayout_42.setWidget(1, QFormLayout.FieldRole, self.label_75)
-
-
-        self.verticalLayout_10.addLayout(self.formLayout_42)
-
-        self.formLayout_43 = QFormLayout()
-        self.formLayout_43.setObjectName(u"formLayout_43")
-        self.formLayout_43.setVerticalSpacing(0)
-        self.label_76 = QLabel(self.verticalLayoutWidget_10)
-        self.label_76.setObjectName(u"label_76")
-
-        self.formLayout_43.setWidget(0, QFormLayout.LabelRole, self.label_76)
-
-        self.lineEdit_46 = QLineEdit(self.verticalLayoutWidget_10)
-        self.lineEdit_46.setObjectName(u"lineEdit_46")
-        self.lineEdit_46.setClearButtonEnabled(True)
-
-        self.formLayout_43.setWidget(1, QFormLayout.LabelRole, self.lineEdit_46)
-
-        self.toolButton_61 = QToolButton(self.verticalLayoutWidget_10)
-        self.toolButton_61.setObjectName(u"toolButton_61")
-        self.toolButton_61.setMaximumSize(QSize(30, 30))
-        self.toolButton_61.setIcon(icon1)
-        self.toolButton_61.setIconSize(QSize(40, 40))
-        self.toolButton_61.setCheckable(False)
-        self.toolButton_61.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_61.setAutoRaise(False)
-        self.toolButton_61.setArrowType(Qt.NoArrow)
-
-        self.formLayout_43.setWidget(0, QFormLayout.FieldRole, self.toolButton_61)
-
-        self.label_77 = QLabel(self.verticalLayoutWidget_10)
-        self.label_77.setObjectName(u"label_77")
-
-        self.formLayout_43.setWidget(1, QFormLayout.FieldRole, self.label_77)
-
-
-        self.verticalLayout_10.addLayout(self.formLayout_43)
-
-        self.formLayout_44 = QFormLayout()
-        self.formLayout_44.setObjectName(u"formLayout_44")
-        self.formLayout_44.setVerticalSpacing(0)
-        self.label_78 = QLabel(self.verticalLayoutWidget_10)
-        self.label_78.setObjectName(u"label_78")
-
-        self.formLayout_44.setWidget(0, QFormLayout.LabelRole, self.label_78)
-
-        self.lineEdit_38 = QLineEdit(self.verticalLayoutWidget_10)
-        self.lineEdit_38.setObjectName(u"lineEdit_38")
-        self.lineEdit_38.setClearButtonEnabled(True)
-
-        self.formLayout_44.setWidget(1, QFormLayout.LabelRole, self.lineEdit_38)
-
-        self.toolButton_62 = QToolButton(self.verticalLayoutWidget_10)
-        self.toolButton_62.setObjectName(u"toolButton_62")
-        self.toolButton_62.setMaximumSize(QSize(30, 30))
-        self.toolButton_62.setIcon(icon1)
-        self.toolButton_62.setIconSize(QSize(40, 40))
-        self.toolButton_62.setCheckable(False)
-        self.toolButton_62.setToolButtonStyle(Qt.ToolButtonIconOnly)
-        self.toolButton_62.setAutoRaise(False)
-        self.toolButton_62.setArrowType(Qt.NoArrow)
-
-        self.formLayout_44.setWidget(0, QFormLayout.FieldRole, self.toolButton_62)
-
-        self.label_79 = QLabel(self.verticalLayoutWidget_10)
-        self.label_79.setObjectName(u"label_79")
-
-        self.formLayout_44.setWidget(1, QFormLayout.FieldRole, self.label_79)
-
-
-        self.verticalLayout_10.addLayout(self.formLayout_44)
-
-
-        self.gridLayout.addWidget(self.groupBox_12, 1, 1, 1, 1)
-
         self.groupBox_9 = QGroupBox(self.gridLayoutWidget)
         self.groupBox_9.setObjectName(u"groupBox_9")
         self.verticalLayoutWidget_11 = QWidget(self.groupBox_9)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
-        self.verticalLayoutWidget_11.setGeometry(QRect(20, 20, 439, 244))
+        self.verticalLayoutWidget_11.setGeometry(QRect(20, 20, 439, 292))
         self.verticalLayout_11 = QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
@@ -605,6 +331,13 @@ class Ui_MainWindow(object):
 
         self.formLayout_46.setWidget(1, QFormLayout.FieldRole, self.label_82)
 
+        self.label_102 = QLabel(self.verticalLayoutWidget_11)
+        self.label_102.setObjectName(u"label_102")
+        self.label_102.setEnabled(False)
+        self.label_102.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_46.setWidget(2, QFormLayout.LabelRole, self.label_102)
+
 
         self.verticalLayout_11.addLayout(self.formLayout_46)
 
@@ -638,6 +371,13 @@ class Ui_MainWindow(object):
         self.label_84.setObjectName(u"label_84")
 
         self.formLayout_47.setWidget(1, QFormLayout.FieldRole, self.label_84)
+
+        self.label_101 = QLabel(self.verticalLayoutWidget_11)
+        self.label_101.setObjectName(u"label_101")
+        self.label_101.setEnabled(False)
+        self.label_101.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_47.setWidget(2, QFormLayout.LabelRole, self.label_101)
 
 
         self.verticalLayout_11.addLayout(self.formLayout_47)
@@ -673,6 +413,13 @@ class Ui_MainWindow(object):
 
         self.formLayout_48.setWidget(1, QFormLayout.FieldRole, self.label_86)
 
+        self.label_100 = QLabel(self.verticalLayoutWidget_11)
+        self.label_100.setObjectName(u"label_100")
+        self.label_100.setEnabled(False)
+        self.label_100.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_48.setWidget(2, QFormLayout.LabelRole, self.label_100)
+
 
         self.verticalLayout_11.addLayout(self.formLayout_48)
 
@@ -683,7 +430,7 @@ class Ui_MainWindow(object):
         self.groupBox_4.setObjectName(u"groupBox_4")
         self.verticalLayoutWidget_9 = QWidget(self.groupBox_4)
         self.verticalLayoutWidget_9.setObjectName(u"verticalLayoutWidget_9")
-        self.verticalLayoutWidget_9.setGeometry(QRect(20, 10, 301, 602))
+        self.verticalLayoutWidget_9.setGeometry(QRect(20, 10, 301, 682))
         self.verticalLayout_9 = QVBoxLayout(self.verticalLayoutWidget_9)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -752,6 +499,13 @@ class Ui_MainWindow(object):
 
         self.formLayout_33.setWidget(1, QFormLayout.FieldRole, self.label_55)
 
+        self.label_96 = QLabel(self.verticalLayoutWidget_9)
+        self.label_96.setObjectName(u"label_96")
+        self.label_96.setEnabled(False)
+        self.label_96.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_33.setWidget(2, QFormLayout.LabelRole, self.label_96)
+
 
         self.verticalLayout_9.addLayout(self.formLayout_33)
 
@@ -785,6 +539,13 @@ class Ui_MainWindow(object):
         self.label_57.setObjectName(u"label_57")
 
         self.formLayout_34.setWidget(1, QFormLayout.FieldRole, self.label_57)
+
+        self.label_95 = QLabel(self.verticalLayoutWidget_9)
+        self.label_95.setObjectName(u"label_95")
+        self.label_95.setEnabled(False)
+        self.label_95.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_34.setWidget(2, QFormLayout.LabelRole, self.label_95)
 
 
         self.verticalLayout_9.addLayout(self.formLayout_34)
@@ -821,6 +582,13 @@ class Ui_MainWindow(object):
 
         self.formLayout_35.setWidget(1, QFormLayout.FieldRole, self.label_59)
 
+        self.label_94 = QLabel(self.verticalLayoutWidget_9)
+        self.label_94.setObjectName(u"label_94")
+        self.label_94.setEnabled(False)
+        self.label_94.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_35.setWidget(2, QFormLayout.LabelRole, self.label_94)
+
 
         self.verticalLayout_9.addLayout(self.formLayout_35)
 
@@ -854,6 +622,13 @@ class Ui_MainWindow(object):
         self.label_64.setObjectName(u"label_64")
 
         self.formLayout_36.setWidget(1, QFormLayout.FieldRole, self.label_64)
+
+        self.label_93 = QLabel(self.verticalLayoutWidget_9)
+        self.label_93.setObjectName(u"label_93")
+        self.label_93.setEnabled(False)
+        self.label_93.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_36.setWidget(2, QFormLayout.LabelRole, self.label_93)
 
 
         self.verticalLayout_9.addLayout(self.formLayout_36)
@@ -889,6 +664,13 @@ class Ui_MainWindow(object):
 
         self.formLayout_37.setWidget(1, QFormLayout.FieldRole, self.label_66)
 
+        self.label_92 = QLabel(self.verticalLayoutWidget_9)
+        self.label_92.setObjectName(u"label_92")
+        self.label_92.setEnabled(False)
+        self.label_92.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_37.setWidget(2, QFormLayout.LabelRole, self.label_92)
+
 
         self.verticalLayout_9.addLayout(self.formLayout_37)
 
@@ -922,6 +704,13 @@ class Ui_MainWindow(object):
         self.label_68.setObjectName(u"label_68")
 
         self.formLayout_38.setWidget(1, QFormLayout.FieldRole, self.label_68)
+
+        self.label_91 = QLabel(self.verticalLayoutWidget_9)
+        self.label_91.setObjectName(u"label_91")
+        self.label_91.setEnabled(False)
+        self.label_91.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_38.setWidget(2, QFormLayout.LabelRole, self.label_91)
 
 
         self.verticalLayout_9.addLayout(self.formLayout_38)
@@ -957,6 +746,13 @@ class Ui_MainWindow(object):
 
         self.formLayout_39.setWidget(1, QFormLayout.FieldRole, self.label_70)
 
+        self.label_90 = QLabel(self.verticalLayoutWidget_9)
+        self.label_90.setObjectName(u"label_90")
+        self.label_90.setEnabled(False)
+        self.label_90.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_39.setWidget(2, QFormLayout.LabelRole, self.label_90)
+
 
         self.verticalLayout_9.addLayout(self.formLayout_39)
 
@@ -991,15 +787,341 @@ class Ui_MainWindow(object):
 
         self.formLayout_40.setWidget(1, QFormLayout.FieldRole, self.label_72)
 
+        self.label_89 = QLabel(self.verticalLayoutWidget_9)
+        self.label_89.setObjectName(u"label_89")
+        self.label_89.setEnabled(False)
+        self.label_89.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_40.setWidget(2, QFormLayout.LabelRole, self.label_89)
+
 
         self.verticalLayout_9.addLayout(self.formLayout_40)
 
 
         self.gridLayout.addWidget(self.groupBox_4, 0, 2, 2, 1)
 
+        self.groupBox_7 = QGroupBox(self.gridLayoutWidget)
+        self.groupBox_7.setObjectName(u"groupBox_7")
+        self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
+        self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
+        self.verticalLayoutWidget_7.setGeometry(QRect(20, 20, 351, 601))
+        self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_7)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_22 = QFormLayout()
+        self.formLayout_22.setObjectName(u"formLayout_22")
+        self.formLayout_22.setVerticalSpacing(0)
+        self.label_40 = QLabel(self.verticalLayoutWidget_7)
+        self.label_40.setObjectName(u"label_40")
+
+        self.formLayout_22.setWidget(0, QFormLayout.LabelRole, self.label_40)
+
+        self.comboBox_6 = QComboBox(self.verticalLayoutWidget_7)
+        self.comboBox_6.addItem("")
+        self.comboBox_6.addItem("")
+        self.comboBox_6.setObjectName(u"comboBox_6")
+        self.comboBox_6.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.formLayout_22.setWidget(1, QFormLayout.LabelRole, self.comboBox_6)
+
+        self.toolButton_43 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_43.setObjectName(u"toolButton_43")
+        self.toolButton_43.setMaximumSize(QSize(30, 30))
+        self.toolButton_43.setIcon(icon1)
+        self.toolButton_43.setIconSize(QSize(40, 40))
+        self.toolButton_43.setCheckable(False)
+        self.toolButton_43.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_43.setAutoRaise(False)
+        self.toolButton_43.setArrowType(Qt.NoArrow)
+
+        self.formLayout_22.setWidget(0, QFormLayout.FieldRole, self.toolButton_43)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_22)
+
+        self.formLayout_23 = QFormLayout()
+        self.formLayout_23.setObjectName(u"formLayout_23")
+        self.formLayout_23.setVerticalSpacing(0)
+        self.label_41 = QLabel(self.verticalLayoutWidget_7)
+        self.label_41.setObjectName(u"label_41")
+
+        self.formLayout_23.setWidget(0, QFormLayout.LabelRole, self.label_41)
+
+        self.lineEdit_20 = QLineEdit(self.verticalLayoutWidget_7)
+        self.lineEdit_20.setObjectName(u"lineEdit_20")
+        self.lineEdit_20.setClearButtonEnabled(True)
+
+        self.formLayout_23.setWidget(1, QFormLayout.LabelRole, self.lineEdit_20)
+
+        self.toolButton_44 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_44.setObjectName(u"toolButton_44")
+        self.toolButton_44.setMaximumSize(QSize(30, 30))
+        self.toolButton_44.setIcon(icon1)
+        self.toolButton_44.setIconSize(QSize(40, 40))
+        self.toolButton_44.setCheckable(False)
+        self.toolButton_44.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_44.setAutoRaise(False)
+        self.toolButton_44.setArrowType(Qt.NoArrow)
+
+        self.formLayout_23.setWidget(0, QFormLayout.FieldRole, self.toolButton_44)
+
+        self.label_42 = QLabel(self.verticalLayoutWidget_7)
+        self.label_42.setObjectName(u"label_42")
+
+        self.formLayout_23.setWidget(1, QFormLayout.FieldRole, self.label_42)
+
+        self.label_97 = QLabel(self.verticalLayoutWidget_7)
+        self.label_97.setObjectName(u"label_97")
+        self.label_97.setEnabled(False)
+        self.label_97.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_23.setWidget(2, QFormLayout.LabelRole, self.label_97)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_23)
+
+        self.formLayout_27 = QFormLayout()
+        self.formLayout_27.setObjectName(u"formLayout_27")
+        self.formLayout_27.setVerticalSpacing(0)
+        self.label_43 = QLabel(self.verticalLayoutWidget_7)
+        self.label_43.setObjectName(u"label_43")
+
+        self.formLayout_27.setWidget(0, QFormLayout.LabelRole, self.label_43)
+
+        self.lineEdit_21 = QLineEdit(self.verticalLayoutWidget_7)
+        self.lineEdit_21.setObjectName(u"lineEdit_21")
+        self.lineEdit_21.setClearButtonEnabled(True)
+
+        self.formLayout_27.setWidget(1, QFormLayout.LabelRole, self.lineEdit_21)
+
+        self.toolButton_45 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_45.setObjectName(u"toolButton_45")
+        self.toolButton_45.setMaximumSize(QSize(30, 30))
+        self.toolButton_45.setIcon(icon1)
+        self.toolButton_45.setIconSize(QSize(40, 40))
+        self.toolButton_45.setCheckable(False)
+        self.toolButton_45.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_45.setAutoRaise(False)
+        self.toolButton_45.setArrowType(Qt.NoArrow)
+
+        self.formLayout_27.setWidget(0, QFormLayout.FieldRole, self.toolButton_45)
+
+        self.label_44 = QLabel(self.verticalLayoutWidget_7)
+        self.label_44.setObjectName(u"label_44")
+
+        self.formLayout_27.setWidget(1, QFormLayout.FieldRole, self.label_44)
+
+        self.label_98 = QLabel(self.verticalLayoutWidget_7)
+        self.label_98.setObjectName(u"label_98")
+        self.label_98.setEnabled(False)
+        self.label_98.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_27.setWidget(2, QFormLayout.LabelRole, self.label_98)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_27)
+
+        self.formLayout_28 = QFormLayout()
+        self.formLayout_28.setObjectName(u"formLayout_28")
+        self.formLayout_28.setVerticalSpacing(0)
+        self.label_45 = QLabel(self.verticalLayoutWidget_7)
+        self.label_45.setObjectName(u"label_45")
+
+        self.formLayout_28.setWidget(0, QFormLayout.LabelRole, self.label_45)
+
+        self.lineEdit_28 = QLineEdit(self.verticalLayoutWidget_7)
+        self.lineEdit_28.setObjectName(u"lineEdit_28")
+        self.lineEdit_28.setClearButtonEnabled(True)
+
+        self.formLayout_28.setWidget(1, QFormLayout.LabelRole, self.lineEdit_28)
+
+        self.toolButton_46 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_46.setObjectName(u"toolButton_46")
+        self.toolButton_46.setMaximumSize(QSize(30, 30))
+        self.toolButton_46.setIcon(icon1)
+        self.toolButton_46.setIconSize(QSize(40, 40))
+        self.toolButton_46.setCheckable(False)
+        self.toolButton_46.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_46.setAutoRaise(False)
+        self.toolButton_46.setArrowType(Qt.NoArrow)
+
+        self.formLayout_28.setWidget(0, QFormLayout.FieldRole, self.toolButton_46)
+
+        self.label_46 = QLabel(self.verticalLayoutWidget_7)
+        self.label_46.setObjectName(u"label_46")
+
+        self.formLayout_28.setWidget(1, QFormLayout.FieldRole, self.label_46)
+
+        self.label_99 = QLabel(self.verticalLayoutWidget_7)
+        self.label_99.setObjectName(u"label_99")
+        self.label_99.setEnabled(False)
+        self.label_99.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_28.setWidget(2, QFormLayout.LabelRole, self.label_99)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_28)
+
+        self.formLayout_41 = QFormLayout()
+        self.formLayout_41.setObjectName(u"formLayout_41")
+        self.formLayout_41.setVerticalSpacing(0)
+        self.label_73 = QLabel(self.verticalLayoutWidget_7)
+        self.label_73.setObjectName(u"label_73")
+
+        self.formLayout_41.setWidget(0, QFormLayout.LabelRole, self.label_73)
+
+        self.toolButton_59 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_59.setObjectName(u"toolButton_59")
+        self.toolButton_59.setMaximumSize(QSize(30, 30))
+        self.toolButton_59.setIcon(icon1)
+        self.toolButton_59.setIconSize(QSize(40, 40))
+        self.toolButton_59.setCheckable(False)
+        self.toolButton_59.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_59.setAutoRaise(False)
+        self.toolButton_59.setArrowType(Qt.NoArrow)
+
+        self.formLayout_41.setWidget(0, QFormLayout.FieldRole, self.toolButton_59)
+
+        self.comboBox_16 = QComboBox(self.verticalLayoutWidget_7)
+        self.comboBox_16.addItem("")
+        self.comboBox_16.addItem("")
+        self.comboBox_16.setObjectName(u"comboBox_16")
+        self.comboBox_16.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.formLayout_41.setWidget(1, QFormLayout.LabelRole, self.comboBox_16)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_41)
+
+        self.formLayout_42 = QFormLayout()
+        self.formLayout_42.setObjectName(u"formLayout_42")
+        self.formLayout_42.setVerticalSpacing(0)
+        self.label_74 = QLabel(self.verticalLayoutWidget_7)
+        self.label_74.setObjectName(u"label_74")
+
+        self.formLayout_42.setWidget(0, QFormLayout.LabelRole, self.label_74)
+
+        self.toolButton_60 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_60.setObjectName(u"toolButton_60")
+        self.toolButton_60.setMaximumSize(QSize(30, 30))
+        self.toolButton_60.setIcon(icon1)
+        self.toolButton_60.setIconSize(QSize(40, 40))
+        self.toolButton_60.setCheckable(False)
+        self.toolButton_60.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_60.setAutoRaise(False)
+        self.toolButton_60.setArrowType(Qt.NoArrow)
+
+        self.formLayout_42.setWidget(0, QFormLayout.FieldRole, self.toolButton_60)
+
+        self.lineEdit_45 = QLineEdit(self.verticalLayoutWidget_7)
+        self.lineEdit_45.setObjectName(u"lineEdit_45")
+        self.lineEdit_45.setClearButtonEnabled(True)
+
+        self.formLayout_42.setWidget(1, QFormLayout.LabelRole, self.lineEdit_45)
+
+        self.label_75 = QLabel(self.verticalLayoutWidget_7)
+        self.label_75.setObjectName(u"label_75")
+
+        self.formLayout_42.setWidget(1, QFormLayout.FieldRole, self.label_75)
+
+        self.label_88 = QLabel(self.verticalLayoutWidget_7)
+        self.label_88.setObjectName(u"label_88")
+        self.label_88.setEnabled(False)
+        self.label_88.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_42.setWidget(2, QFormLayout.LabelRole, self.label_88)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_42)
+
+        self.formLayout_43 = QFormLayout()
+        self.formLayout_43.setObjectName(u"formLayout_43")
+        self.formLayout_43.setVerticalSpacing(0)
+        self.label_76 = QLabel(self.verticalLayoutWidget_7)
+        self.label_76.setObjectName(u"label_76")
+
+        self.formLayout_43.setWidget(0, QFormLayout.LabelRole, self.label_76)
+
+        self.lineEdit_46 = QLineEdit(self.verticalLayoutWidget_7)
+        self.lineEdit_46.setObjectName(u"lineEdit_46")
+        self.lineEdit_46.setClearButtonEnabled(True)
+
+        self.formLayout_43.setWidget(1, QFormLayout.LabelRole, self.lineEdit_46)
+
+        self.toolButton_61 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_61.setObjectName(u"toolButton_61")
+        self.toolButton_61.setMaximumSize(QSize(30, 30))
+        self.toolButton_61.setIcon(icon1)
+        self.toolButton_61.setIconSize(QSize(40, 40))
+        self.toolButton_61.setCheckable(False)
+        self.toolButton_61.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_61.setAutoRaise(False)
+        self.toolButton_61.setArrowType(Qt.NoArrow)
+
+        self.formLayout_43.setWidget(0, QFormLayout.FieldRole, self.toolButton_61)
+
+        self.label_77 = QLabel(self.verticalLayoutWidget_7)
+        self.label_77.setObjectName(u"label_77")
+
+        self.formLayout_43.setWidget(1, QFormLayout.FieldRole, self.label_77)
+
+        self.label_87 = QLabel(self.verticalLayoutWidget_7)
+        self.label_87.setObjectName(u"label_87")
+        self.label_87.setEnabled(False)
+        self.label_87.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_43.setWidget(2, QFormLayout.LabelRole, self.label_87)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_43)
+
+        self.formLayout_44 = QFormLayout()
+        self.formLayout_44.setObjectName(u"formLayout_44")
+        self.formLayout_44.setVerticalSpacing(0)
+        self.label_78 = QLabel(self.verticalLayoutWidget_7)
+        self.label_78.setObjectName(u"label_78")
+
+        self.formLayout_44.setWidget(0, QFormLayout.LabelRole, self.label_78)
+
+        self.toolButton_62 = QToolButton(self.verticalLayoutWidget_7)
+        self.toolButton_62.setObjectName(u"toolButton_62")
+        self.toolButton_62.setMaximumSize(QSize(30, 30))
+        self.toolButton_62.setIcon(icon1)
+        self.toolButton_62.setIconSize(QSize(40, 40))
+        self.toolButton_62.setCheckable(False)
+        self.toolButton_62.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.toolButton_62.setAutoRaise(False)
+        self.toolButton_62.setArrowType(Qt.NoArrow)
+
+        self.formLayout_44.setWidget(0, QFormLayout.FieldRole, self.toolButton_62)
+
+        self.lineEdit_38 = QLineEdit(self.verticalLayoutWidget_7)
+        self.lineEdit_38.setObjectName(u"lineEdit_38")
+        self.lineEdit_38.setClearButtonEnabled(True)
+
+        self.formLayout_44.setWidget(1, QFormLayout.LabelRole, self.lineEdit_38)
+
+        self.label_79 = QLabel(self.verticalLayoutWidget_7)
+        self.label_79.setObjectName(u"label_79")
+
+        self.formLayout_44.setWidget(1, QFormLayout.FieldRole, self.label_79)
+
+        self.label_62 = QLabel(self.verticalLayoutWidget_7)
+        self.label_62.setObjectName(u"label_62")
+        self.label_62.setEnabled(False)
+        self.label_62.setStyleSheet(u"color: rgb(170, 0, 0)")
+
+        self.formLayout_44.setWidget(2, QFormLayout.LabelRole, self.label_62)
+
+
+        self.verticalLayout_7.addLayout(self.formLayout_44)
+
+
+        self.gridLayout.addWidget(self.groupBox_7, 0, 1, 2, 1)
+
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(880, 660, 168, 51))
+        self.horizontalLayoutWidget.setGeometry(QRect(900, 700, 168, 51))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -1018,7 +1140,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1156, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1146, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
@@ -1027,6 +1149,55 @@ class Ui_MainWindow(object):
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        QWidget.setTabOrder(self.toolButton_63, self.comboBox_9)
+        QWidget.setTabOrder(self.comboBox_9, self.toolButton_64)
+        QWidget.setTabOrder(self.toolButton_64, self.lineEdit_32)
+        QWidget.setTabOrder(self.lineEdit_32, self.toolButton_65)
+        QWidget.setTabOrder(self.toolButton_65, self.lineEdit_33)
+        QWidget.setTabOrder(self.lineEdit_33, self.toolButton_66)
+        QWidget.setTabOrder(self.toolButton_66, self.lineEdit_34)
+        QWidget.setTabOrder(self.lineEdit_34, self.toolButton_47)
+        QWidget.setTabOrder(self.toolButton_47, self.comboBox_7)
+        QWidget.setTabOrder(self.comboBox_7, self.toolButton_48)
+        QWidget.setTabOrder(self.toolButton_48, self.lineEdit_22)
+        QWidget.setTabOrder(self.lineEdit_22, self.toolButton_49)
+        QWidget.setTabOrder(self.toolButton_49, self.lineEdit_23)
+        QWidget.setTabOrder(self.lineEdit_23, self.toolButton_43)
+        QWidget.setTabOrder(self.toolButton_43, self.comboBox_6)
+        QWidget.setTabOrder(self.comboBox_6, self.toolButton_44)
+        QWidget.setTabOrder(self.toolButton_44, self.lineEdit_20)
+        QWidget.setTabOrder(self.lineEdit_20, self.toolButton_45)
+        QWidget.setTabOrder(self.toolButton_45, self.lineEdit_21)
+        QWidget.setTabOrder(self.lineEdit_21, self.toolButton_46)
+        QWidget.setTabOrder(self.toolButton_46, self.lineEdit_28)
+        QWidget.setTabOrder(self.lineEdit_28, self.toolButton_59)
+        QWidget.setTabOrder(self.toolButton_59, self.comboBox_16)
+        QWidget.setTabOrder(self.comboBox_16, self.toolButton_60)
+        QWidget.setTabOrder(self.toolButton_60, self.lineEdit_45)
+        QWidget.setTabOrder(self.lineEdit_45, self.toolButton_61)
+        QWidget.setTabOrder(self.toolButton_61, self.lineEdit_46)
+        QWidget.setTabOrder(self.lineEdit_46, self.toolButton_62)
+        QWidget.setTabOrder(self.toolButton_62, self.lineEdit_38)
+        QWidget.setTabOrder(self.lineEdit_38, self.toolButton_50)
+        QWidget.setTabOrder(self.toolButton_50, self.comboBox_8)
+        QWidget.setTabOrder(self.comboBox_8, self.toolButton_51)
+        QWidget.setTabOrder(self.toolButton_51, self.lineEdit_13)
+        QWidget.setTabOrder(self.lineEdit_13, self.toolButton_52)
+        QWidget.setTabOrder(self.toolButton_52, self.lineEdit_14)
+        QWidget.setTabOrder(self.lineEdit_14, self.toolButton_53)
+        QWidget.setTabOrder(self.toolButton_53, self.lineEdit_24)
+        QWidget.setTabOrder(self.lineEdit_24, self.toolButton_54)
+        QWidget.setTabOrder(self.toolButton_54, self.lineEdit_25)
+        QWidget.setTabOrder(self.lineEdit_25, self.toolButton_55)
+        QWidget.setTabOrder(self.toolButton_55, self.lineEdit_26)
+        QWidget.setTabOrder(self.lineEdit_26, self.toolButton_56)
+        QWidget.setTabOrder(self.toolButton_56, self.lineEdit_29)
+        QWidget.setTabOrder(self.lineEdit_29, self.toolButton_57)
+        QWidget.setTabOrder(self.toolButton_57, self.lineEdit_30)
+        QWidget.setTabOrder(self.lineEdit_30, self.toolButton_58)
+        QWidget.setTabOrder(self.toolButton_58, self.lineEdit_31)
+        QWidget.setTabOrder(self.lineEdit_31, self.pushButton)
+        QWidget.setTabOrder(self.pushButton, self.pushButton_2)
 
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuHelp.menuAction())
@@ -1039,35 +1210,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"SubStationGuard", None))
-        self.groupBox_7.setTitle("")
-        self.label_40.setText(QCoreApplication.translate("MainWindow", u"Calculate Maximum Grid Current according to IEEE Std 80", None))
-        self.comboBox_6.setItemText(0, QCoreApplication.translate("MainWindow", u"Yes", None))
-        self.comboBox_6.setItemText(1, QCoreApplication.translate("MainWindow", u"No", None))
-
-        self.label_41.setText(QCoreApplication.translate("MainWindow", u"Symmetrical Ground Fault Current", None))
-#if QT_CONFIG(tooltip)
-        self.lineEdit_20.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'If', Unit of Measurement: 'A')", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.label_42.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_42.setText(QCoreApplication.translate("MainWindow", u"A", None))
-        self.label_43.setText(QCoreApplication.translate("MainWindow", u"Fault Current Division Factor", None))
-#if QT_CONFIG(tooltip)
-        self.lineEdit_21.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'Sf', Unit of Measurement: 'p.u,')", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.label_44.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_44.setText(QCoreApplication.translate("MainWindow", u"p.u.", None))
-        self.label_45.setText(QCoreApplication.translate("MainWindow", u"Maximum Grid Current", None))
-#if QT_CONFIG(tooltip)
-        self.lineEdit_28.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'IG', Unit of Measurement: 'A')", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.label_46.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_46.setText(QCoreApplication.translate("MainWindow", u"A", None))
         self.groupBox_8.setTitle("")
         self.comboBox_7.setItemText(0, QCoreApplication.translate("MainWindow", u"Yes", None))
         self.comboBox_7.setItemText(1, QCoreApplication.translate("MainWindow", u"No", None))
@@ -1081,6 +1223,7 @@ class Ui_MainWindow(object):
         self.label_49.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_49.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
+        self.label_61.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_51.setText(QCoreApplication.translate("MainWindow", u"Soil Resistivity", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_23.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: '\u03c1', Unit of Measurement: '\u03a9m')", None))
@@ -1089,35 +1232,7 @@ class Ui_MainWindow(object):
         self.label_52.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_52.setText(QCoreApplication.translate("MainWindow", u"\u03a9m", None))
-        self.groupBox_12.setTitle("")
-        self.label_73.setText(QCoreApplication.translate("MainWindow", u"Calculate Decrement Factor according to IEEE Std 80", None))
-        self.comboBox_16.setItemText(0, QCoreApplication.translate("MainWindow", u"Yes", None))
-        self.comboBox_16.setItemText(1, QCoreApplication.translate("MainWindow", u"No", None))
-
-#if QT_CONFIG(tooltip)
-        self.lineEdit_45.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'X', Unit of Measurement: '\u03a9')", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_74.setText(QCoreApplication.translate("MainWindow", u"Inductive Reactance", None))
-#if QT_CONFIG(tooltip)
-        self.label_75.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_75.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
-        self.label_76.setText(QCoreApplication.translate("MainWindow", u"System resistance at fault", None))
-#if QT_CONFIG(tooltip)
-        self.lineEdit_46.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'R', Unit of Measurement: '\u03a9')", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.label_77.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_77.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
-        self.label_78.setText(QCoreApplication.translate("MainWindow", u"Decrement Factor", None))
-#if QT_CONFIG(tooltip)
-        self.lineEdit_38.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'Df', Unit of Measurement: 'p.u.')", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.label_79.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_79.setText(QCoreApplication.translate("MainWindow", u"p.u.", None))
+        self.label_60.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.groupBox_9.setTitle("")
         self.label_80.setText(QCoreApplication.translate("MainWindow", u"System Type of MV/LV Substation", None))
         self.comboBox_9.setItemText(0, QCoreApplication.translate("MainWindow", u"TN", None))
@@ -1134,11 +1249,13 @@ class Ui_MainWindow(object):
         self.label_82.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_82.setText(QCoreApplication.translate("MainWindow", u"m^-1", None))
+        self.label_102.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_83.setText(QCoreApplication.translate("MainWindow", u"Surface potential proportionality factor", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_33.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'ksp', Function)", None))
 #endif // QT_CONFIG(tooltip)
         self.label_84.setText(QCoreApplication.translate("MainWindow", u"function", None))
+        self.label_101.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_85.setText(QCoreApplication.translate("MainWindow", u"Fault Duration", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_34.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'tf', Unit of Measurement: 's')", None))
@@ -1147,6 +1264,7 @@ class Ui_MainWindow(object):
         self.label_86.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_86.setText(QCoreApplication.translate("MainWindow", u"s", None))
+        self.label_100.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.groupBox_4.setTitle("")
         self.label_53.setText(QCoreApplication.translate("MainWindow", u"Safety Standard", None))
         self.comboBox_8.setItemText(0, QCoreApplication.translate("MainWindow", u"IEEE Std 80", None))
@@ -1160,6 +1278,7 @@ class Ui_MainWindow(object):
         self.label_55.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_55.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
+        self.label_96.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_56.setText(QCoreApplication.translate("MainWindow", u"Factor related to tolerable electric shock energy", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_14.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'k', Unit of Measurement: 'A\u221as')", None))
@@ -1168,6 +1287,7 @@ class Ui_MainWindow(object):
         self.label_57.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_57.setText(QCoreApplication.translate("MainWindow", u"A\u221as", None))
+        self.label_95.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_58.setText(QCoreApplication.translate("MainWindow", u"Body current limit", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_24.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'IB', Unit of Measurement: 'A')", None))
@@ -1176,6 +1296,7 @@ class Ui_MainWindow(object):
         self.label_59.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_59.setText(QCoreApplication.translate("MainWindow", u"A", None))
+        self.label_94.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_63.setText(QCoreApplication.translate("MainWindow", u"Body impedance", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_25.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'ZT', Unit of Measurement: '\u03a9')", None))
@@ -1184,6 +1305,7 @@ class Ui_MainWindow(object):
         self.label_64.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_64.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
+        self.label_93.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_65.setText(QCoreApplication.translate("MainWindow", u"Heart current factor", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_26.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'HF', Unit of Measurement: 'p.u.')", None))
@@ -1192,6 +1314,7 @@ class Ui_MainWindow(object):
         self.label_66.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_66.setText(QCoreApplication.translate("MainWindow", u"p.u.", None))
+        self.label_92.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_67.setText(QCoreApplication.translate("MainWindow", u"Body factor", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_29.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'BF', Unit of Measurement: 'p.u.')", None))
@@ -1200,6 +1323,7 @@ class Ui_MainWindow(object):
         self.label_68.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_68.setText(QCoreApplication.translate("MainWindow", u"p.u.", None))
+        self.label_91.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_69.setText(QCoreApplication.translate("MainWindow", u"Constant F", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_30.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'F', Unit of Measurement: 'p.u.')", None))
@@ -1208,6 +1332,7 @@ class Ui_MainWindow(object):
         self.label_70.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_70.setText(QCoreApplication.translate("MainWindow", u"p.u.", None))
+        self.label_90.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_71.setText(QCoreApplication.translate("MainWindow", u"Voltage limit", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_31.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'Vlim', Unit of Measurement: 'V')", None))
@@ -1216,6 +1341,70 @@ class Ui_MainWindow(object):
         self.label_72.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
         self.label_72.setText(QCoreApplication.translate("MainWindow", u"V", None))
+        self.label_89.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.groupBox_7.setTitle("")
+        self.label_40.setText(QCoreApplication.translate("MainWindow", u"Calculate Maximum Grid Current according to IEEE Std 80", None))
+        self.comboBox_6.setItemText(0, QCoreApplication.translate("MainWindow", u"Yes", None))
+        self.comboBox_6.setItemText(1, QCoreApplication.translate("MainWindow", u"No", None))
+
+        self.label_41.setText(QCoreApplication.translate("MainWindow", u"Symmetrical Ground Fault Current", None))
+#if QT_CONFIG(tooltip)
+        self.lineEdit_20.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'If', Unit of Measurement: 'A')", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.label_42.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_42.setText(QCoreApplication.translate("MainWindow", u"A", None))
+        self.label_97.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.label_43.setText(QCoreApplication.translate("MainWindow", u"Fault Current Division Factor", None))
+#if QT_CONFIG(tooltip)
+        self.lineEdit_21.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'Sf', Unit of Measurement: 'p.u,')", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.label_44.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_44.setText(QCoreApplication.translate("MainWindow", u"p.u.", None))
+        self.label_98.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.label_45.setText(QCoreApplication.translate("MainWindow", u"Maximum Grid Current", None))
+#if QT_CONFIG(tooltip)
+        self.lineEdit_28.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'IG', Unit of Measurement: 'A')", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.label_46.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_46.setText(QCoreApplication.translate("MainWindow", u"A", None))
+        self.label_99.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.label_73.setText(QCoreApplication.translate("MainWindow", u"Calculate Decrement Factor according to IEEE Std 80", None))
+        self.comboBox_16.setItemText(0, QCoreApplication.translate("MainWindow", u"Yes", None))
+        self.comboBox_16.setItemText(1, QCoreApplication.translate("MainWindow", u"No", None))
+
+        self.label_74.setText(QCoreApplication.translate("MainWindow", u"Inductive Reactance", None))
+#if QT_CONFIG(tooltip)
+        self.lineEdit_45.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'X', Unit of Measurement: '\u03a9')", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.label_75.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_75.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
+        self.label_88.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.label_76.setText(QCoreApplication.translate("MainWindow", u"System resistance at fault", None))
+#if QT_CONFIG(tooltip)
+        self.lineEdit_46.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'R', Unit of Measurement: '\u03a9')", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.label_77.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_77.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
+        self.label_87.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.label_78.setText(QCoreApplication.translate("MainWindow", u"Decrement Factor", None))
+#if QT_CONFIG(tooltip)
+        self.lineEdit_38.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'Df', Unit of Measurement: 'p.u.')", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.label_79.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_79.setText(QCoreApplication.translate("MainWindow", u"p.u.", None))
+        self.label_62.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Evaluate", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
