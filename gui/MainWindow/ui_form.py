@@ -29,12 +29,8 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(1146, 798)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
-        MainWindow.setSizePolicy(sizePolicy)
+        MainWindow.resize(1280, 800)
+        MainWindow.setMinimumSize(QSize(1280, 800))
         palette = QPalette()
         brush = QBrush(QColor(0, 0, 0, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -126,17 +122,15 @@ class Ui_MainWindow(object):
         MainWindow.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.gridLayoutWidget = QWidget(self.centralwidget)
-        self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
-        self.gridLayoutWidget.setGeometry(QRect(20, 10, 1111, 681))
-        self.gridLayout = QGridLayout(self.gridLayoutWidget)
+        self.gridLayout_2 = QGridLayout(self.centralwidget)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.groupBox_8 = QGroupBox(self.gridLayoutWidget)
+        self.groupBox_8 = QGroupBox(self.centralwidget)
         self.groupBox_8.setObjectName(u"groupBox_8")
         self.verticalLayoutWidget_8 = QWidget(self.groupBox_8)
         self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
-        self.verticalLayoutWidget_8.setGeometry(QRect(20, 20, 329, 220))
+        self.verticalLayoutWidget_8.setGeometry(QRect(20, 20, 329, 268))
         self.verticalLayout_8 = QVBoxLayout(self.verticalLayoutWidget_8)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
@@ -167,6 +161,10 @@ class Ui_MainWindow(object):
 
         self.label_47 = QLabel(self.verticalLayoutWidget_8)
         self.label_47.setObjectName(u"label_47")
+        font = QFont()
+        font.setBold(True)
+        font.setUnderline(True)
+        self.label_47.setFont(font)
 
         self.formLayout_29.setWidget(0, QFormLayout.LabelRole, self.label_47)
 
@@ -178,6 +176,7 @@ class Ui_MainWindow(object):
         self.formLayout_30.setVerticalSpacing(0)
         self.label_48 = QLabel(self.verticalLayoutWidget_8)
         self.label_48.setObjectName(u"label_48")
+        self.label_48.setFont(font)
 
         self.formLayout_30.setWidget(0, QFormLayout.LabelRole, self.label_48)
 
@@ -219,6 +218,7 @@ class Ui_MainWindow(object):
         self.formLayout_31.setVerticalSpacing(0)
         self.label_51 = QLabel(self.verticalLayoutWidget_8)
         self.label_51.setObjectName(u"label_51")
+        self.label_51.setFont(font)
 
         self.formLayout_31.setWidget(0, QFormLayout.LabelRole, self.label_51)
 
@@ -258,11 +258,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.groupBox_8, 1, 0, 1, 1)
 
-        self.groupBox_9 = QGroupBox(self.gridLayoutWidget)
+        self.groupBox_9 = QGroupBox(self.centralwidget)
         self.groupBox_9.setObjectName(u"groupBox_9")
         self.verticalLayoutWidget_11 = QWidget(self.groupBox_9)
         self.verticalLayoutWidget_11.setObjectName(u"verticalLayoutWidget_11")
-        self.verticalLayoutWidget_11.setGeometry(QRect(20, 20, 439, 292))
+        self.verticalLayoutWidget_11.setGeometry(QRect(20, 20, 439, 315))
         self.verticalLayout_11 = QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
@@ -271,6 +271,7 @@ class Ui_MainWindow(object):
         self.formLayout_45.setVerticalSpacing(0)
         self.label_80 = QLabel(self.verticalLayoutWidget_11)
         self.label_80.setObjectName(u"label_80")
+        self.label_80.setFont(font)
 
         self.formLayout_45.setWidget(0, QFormLayout.LabelRole, self.label_80)
 
@@ -302,6 +303,7 @@ class Ui_MainWindow(object):
         self.formLayout_46.setVerticalSpacing(0)
         self.label_81 = QLabel(self.verticalLayoutWidget_11)
         self.label_81.setObjectName(u"label_81")
+        self.label_81.setFont(font)
 
         self.formLayout_46.setWidget(0, QFormLayout.LabelRole, self.label_81)
 
@@ -346,8 +348,9 @@ class Ui_MainWindow(object):
         self.formLayout_47.setVerticalSpacing(0)
         self.label_83 = QLabel(self.verticalLayoutWidget_11)
         self.label_83.setObjectName(u"label_83")
+        self.label_83.setFont(font)
 
-        self.formLayout_47.setWidget(0, QFormLayout.LabelRole, self.label_83)
+        self.formLayout_47.setWidget(2, QFormLayout.LabelRole, self.label_83)
 
         self.toolButton_65 = QToolButton(self.verticalLayoutWidget_11)
         self.toolButton_65.setObjectName(u"toolButton_65")
@@ -359,25 +362,25 @@ class Ui_MainWindow(object):
         self.toolButton_65.setAutoRaise(False)
         self.toolButton_65.setArrowType(Qt.NoArrow)
 
-        self.formLayout_47.setWidget(0, QFormLayout.FieldRole, self.toolButton_65)
+        self.formLayout_47.setWidget(2, QFormLayout.FieldRole, self.toolButton_65)
 
         self.lineEdit_33 = QLineEdit(self.verticalLayoutWidget_11)
         self.lineEdit_33.setObjectName(u"lineEdit_33")
         self.lineEdit_33.setClearButtonEnabled(True)
 
-        self.formLayout_47.setWidget(1, QFormLayout.LabelRole, self.lineEdit_33)
+        self.formLayout_47.setWidget(4, QFormLayout.LabelRole, self.lineEdit_33)
 
         self.label_84 = QLabel(self.verticalLayoutWidget_11)
         self.label_84.setObjectName(u"label_84")
 
-        self.formLayout_47.setWidget(1, QFormLayout.FieldRole, self.label_84)
+        self.formLayout_47.setWidget(4, QFormLayout.FieldRole, self.label_84)
 
         self.label_101 = QLabel(self.verticalLayoutWidget_11)
         self.label_101.setObjectName(u"label_101")
         self.label_101.setEnabled(False)
         self.label_101.setStyleSheet(u"color: rgb(170, 0, 0)")
 
-        self.formLayout_47.setWidget(2, QFormLayout.LabelRole, self.label_101)
+        self.formLayout_47.setWidget(5, QFormLayout.LabelRole, self.label_101)
 
 
         self.verticalLayout_11.addLayout(self.formLayout_47)
@@ -387,6 +390,7 @@ class Ui_MainWindow(object):
         self.formLayout_48.setVerticalSpacing(0)
         self.label_85 = QLabel(self.verticalLayoutWidget_11)
         self.label_85.setObjectName(u"label_85")
+        self.label_85.setFont(font)
 
         self.formLayout_48.setWidget(0, QFormLayout.LabelRole, self.label_85)
 
@@ -426,11 +430,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.groupBox_9, 0, 0, 1, 1)
 
-        self.groupBox_4 = QGroupBox(self.gridLayoutWidget)
+        self.groupBox_4 = QGroupBox(self.centralwidget)
         self.groupBox_4.setObjectName(u"groupBox_4")
         self.verticalLayoutWidget_9 = QWidget(self.groupBox_4)
         self.verticalLayoutWidget_9.setObjectName(u"verticalLayoutWidget_9")
-        self.verticalLayoutWidget_9.setGeometry(QRect(20, 10, 301, 682))
+        self.verticalLayoutWidget_9.setGeometry(QRect(20, 10, 308, 682))
         self.verticalLayout_9 = QVBoxLayout(self.verticalLayoutWidget_9)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -440,6 +444,7 @@ class Ui_MainWindow(object):
         self.formLayout_32.setVerticalSpacing(0)
         self.label_53 = QLabel(self.verticalLayoutWidget_9)
         self.label_53.setObjectName(u"label_53")
+        self.label_53.setFont(font)
 
         self.formLayout_32.setWidget(0, QFormLayout.LabelRole, self.label_53)
 
@@ -473,6 +478,7 @@ class Ui_MainWindow(object):
         self.formLayout_33.setVerticalSpacing(0)
         self.label_54 = QLabel(self.verticalLayoutWidget_9)
         self.label_54.setObjectName(u"label_54")
+        self.label_54.setFont(font)
 
         self.formLayout_33.setWidget(0, QFormLayout.LabelRole, self.label_54)
 
@@ -514,6 +520,7 @@ class Ui_MainWindow(object):
         self.formLayout_34.setVerticalSpacing(0)
         self.label_56 = QLabel(self.verticalLayoutWidget_9)
         self.label_56.setObjectName(u"label_56")
+        self.label_56.setFont(font)
 
         self.formLayout_34.setWidget(0, QFormLayout.LabelRole, self.label_56)
 
@@ -556,6 +563,7 @@ class Ui_MainWindow(object):
         self.formLayout_35.setVerticalSpacing(0)
         self.label_58 = QLabel(self.verticalLayoutWidget_9)
         self.label_58.setObjectName(u"label_58")
+        self.label_58.setFont(font)
 
         self.formLayout_35.setWidget(0, QFormLayout.LabelRole, self.label_58)
 
@@ -597,6 +605,7 @@ class Ui_MainWindow(object):
         self.formLayout_36.setVerticalSpacing(0)
         self.label_63 = QLabel(self.verticalLayoutWidget_9)
         self.label_63.setObjectName(u"label_63")
+        self.label_63.setFont(font)
 
         self.formLayout_36.setWidget(0, QFormLayout.LabelRole, self.label_63)
 
@@ -638,6 +647,7 @@ class Ui_MainWindow(object):
         self.formLayout_37.setVerticalSpacing(0)
         self.label_65 = QLabel(self.verticalLayoutWidget_9)
         self.label_65.setObjectName(u"label_65")
+        self.label_65.setFont(font)
 
         self.formLayout_37.setWidget(0, QFormLayout.LabelRole, self.label_65)
 
@@ -679,6 +689,7 @@ class Ui_MainWindow(object):
         self.formLayout_38.setVerticalSpacing(0)
         self.label_67 = QLabel(self.verticalLayoutWidget_9)
         self.label_67.setObjectName(u"label_67")
+        self.label_67.setFont(font)
 
         self.formLayout_38.setWidget(0, QFormLayout.LabelRole, self.label_67)
 
@@ -720,6 +731,7 @@ class Ui_MainWindow(object):
         self.formLayout_39.setVerticalSpacing(0)
         self.label_69 = QLabel(self.verticalLayoutWidget_9)
         self.label_69.setObjectName(u"label_69")
+        self.label_69.setFont(font)
 
         self.formLayout_39.setWidget(0, QFormLayout.LabelRole, self.label_69)
 
@@ -761,6 +773,7 @@ class Ui_MainWindow(object):
         self.formLayout_40.setVerticalSpacing(0)
         self.label_71 = QLabel(self.verticalLayoutWidget_9)
         self.label_71.setObjectName(u"label_71")
+        self.label_71.setFont(font)
 
         self.formLayout_40.setWidget(0, QFormLayout.LabelRole, self.label_71)
 
@@ -800,11 +813,11 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.groupBox_4, 0, 2, 2, 1)
 
-        self.groupBox_7 = QGroupBox(self.gridLayoutWidget)
+        self.groupBox_7 = QGroupBox(self.centralwidget)
         self.groupBox_7.setObjectName(u"groupBox_7")
         self.verticalLayoutWidget_7 = QWidget(self.groupBox_7)
         self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
-        self.verticalLayoutWidget_7.setGeometry(QRect(20, 20, 351, 601))
+        self.verticalLayoutWidget_7.setGeometry(QRect(20, 20, 358, 601))
         self.verticalLayout_7 = QVBoxLayout(self.verticalLayoutWidget_7)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
@@ -813,6 +826,7 @@ class Ui_MainWindow(object):
         self.formLayout_22.setVerticalSpacing(0)
         self.label_40 = QLabel(self.verticalLayoutWidget_7)
         self.label_40.setObjectName(u"label_40")
+        self.label_40.setFont(font)
 
         self.formLayout_22.setWidget(0, QFormLayout.LabelRole, self.label_40)
 
@@ -844,6 +858,7 @@ class Ui_MainWindow(object):
         self.formLayout_23.setVerticalSpacing(0)
         self.label_41 = QLabel(self.verticalLayoutWidget_7)
         self.label_41.setObjectName(u"label_41")
+        self.label_41.setFont(font)
 
         self.formLayout_23.setWidget(0, QFormLayout.LabelRole, self.label_41)
 
@@ -885,6 +900,7 @@ class Ui_MainWindow(object):
         self.formLayout_27.setVerticalSpacing(0)
         self.label_43 = QLabel(self.verticalLayoutWidget_7)
         self.label_43.setObjectName(u"label_43")
+        self.label_43.setFont(font)
 
         self.formLayout_27.setWidget(0, QFormLayout.LabelRole, self.label_43)
 
@@ -926,6 +942,7 @@ class Ui_MainWindow(object):
         self.formLayout_28.setVerticalSpacing(0)
         self.label_45 = QLabel(self.verticalLayoutWidget_7)
         self.label_45.setObjectName(u"label_45")
+        self.label_45.setFont(font)
 
         self.formLayout_28.setWidget(0, QFormLayout.LabelRole, self.label_45)
 
@@ -967,6 +984,7 @@ class Ui_MainWindow(object):
         self.formLayout_41.setVerticalSpacing(0)
         self.label_73 = QLabel(self.verticalLayoutWidget_7)
         self.label_73.setObjectName(u"label_73")
+        self.label_73.setFont(font)
 
         self.formLayout_41.setWidget(0, QFormLayout.LabelRole, self.label_73)
 
@@ -998,6 +1016,7 @@ class Ui_MainWindow(object):
         self.formLayout_42.setVerticalSpacing(0)
         self.label_74 = QLabel(self.verticalLayoutWidget_7)
         self.label_74.setObjectName(u"label_74")
+        self.label_74.setFont(font)
 
         self.formLayout_42.setWidget(0, QFormLayout.LabelRole, self.label_74)
 
@@ -1039,6 +1058,7 @@ class Ui_MainWindow(object):
         self.formLayout_43.setVerticalSpacing(0)
         self.label_76 = QLabel(self.verticalLayoutWidget_7)
         self.label_76.setObjectName(u"label_76")
+        self.label_76.setFont(font)
 
         self.formLayout_43.setWidget(0, QFormLayout.LabelRole, self.label_76)
 
@@ -1080,6 +1100,7 @@ class Ui_MainWindow(object):
         self.formLayout_44.setVerticalSpacing(0)
         self.label_78 = QLabel(self.verticalLayoutWidget_7)
         self.label_78.setObjectName(u"label_78")
+        self.label_78.setFont(font)
 
         self.formLayout_44.setWidget(0, QFormLayout.LabelRole, self.label_78)
 
@@ -1119,28 +1140,30 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.groupBox_7, 0, 1, 2, 1)
 
-        self.horizontalLayoutWidget = QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(900, 700, 168, 51))
-        self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
+
+        self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
+
+        self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.pushButton = QPushButton(self.horizontalLayoutWidget)
+        self.pushButton = QPushButton(self.centralwidget)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout.addWidget(self.pushButton)
 
-        self.pushButton_2 = QPushButton(self.horizontalLayoutWidget)
+        self.pushButton_2 = QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout.addWidget(self.pushButton_2)
 
+
+        self.gridLayout_2.addLayout(self.horizontalLayout, 1, 0, 1, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1146, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1280, 21))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
