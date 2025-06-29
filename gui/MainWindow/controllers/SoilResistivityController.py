@@ -44,3 +44,20 @@ class SoilResistivityController(BaseController):
             validator_func=validation.is_valid_number,
             error_message="Enter a valid number"
         )
+    
+    def extractParametersFromGui(self):
+        def safe_float(text, default=0.0):
+            try:
+                return float(text)
+            except (ValueError, TypeError):
+                return default
+        return {
+            "calcSoilResistivity": str(self.ui.comboBox_7.currentIndex()),
+            "groundResistance": safe_float(self.ui.lineEdit_22.text()),
+            "soilResistivity": safe_float(self.ui.lineEdit_23.text())
+        }
+
+    def resetParameters(self):
+        self.ui.comboBox_7.setCurrentIndex(0)
+        self.ui.lineEdit_22.setText("")
+        self.ui.lineEdit_23.setText("")

@@ -127,3 +127,32 @@ class SafetyStandardController(BaseController):
         elif system_type == "TN":
             self.enable_combo_item(self.ui.comboBox_8, 0, True)
             self.enable_combo_item(self.ui.comboBox_8, 1, True)
+    
+    def extractParametersFromGui(self):
+        def safe_float(text, default=0.0):
+            try:
+                return float(text)
+            except (ValueError, TypeError):
+                return default
+        return {
+            "safetyStandard": str(self.ui.comboBox_8.currentIndex()),
+            "bodyResistance": safe_float(self.ui.lineEdit_13.text()),
+            "energyFactor": safe_float(self.ui.lineEdit_14.text()),
+            "bodyCurrentLimit": safe_float(self.ui.lineEdit_24.text()),
+            "bodyImpedance": safe_float(self.ui.lineEdit_25.text()),
+            "heartFactor": safe_float(self.ui.lineEdit_26.text()),
+            "bodyFactor": safe_float(self.ui.lineEdit_29.text()),
+            "constantF": safe_float(self.ui.lineEdit_30.text()),
+            "voltageLimit": safe_float(self.ui.lineEdit_31.text())
+        }
+    
+    def resetParameters(self):
+        self.ui.comboBox_8.setCurrentIndex(0)
+        self.ui.lineEdit_13.setText("")
+        self.ui.lineEdit_14.setText("")
+        self.ui.lineEdit_24.setText("")
+        self.ui.lineEdit_25.setText("")
+        self.ui.lineEdit_26.setText("")
+        self.ui.lineEdit_29.setText("")
+        self.ui.lineEdit_30.setText("")
+        self.ui.lineEdit_31.setText("")

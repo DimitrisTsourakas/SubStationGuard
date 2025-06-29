@@ -2,12 +2,7 @@
 
 import sys
 
-from controllers.SystemTypeController import SystemTyperController
-from controllers.SoilResistivityController import SoilResistivityController
-from controllers.GridCurrentController import GridCurrentController
-from controllers.DecrementFactorController import DecrementFactorController
-from controllers.SafetyStandardController import SafetyStandardController
-
+from controllers.SeparationDistanceController import SeparationDistanceController
 
 from PySide6.QtWidgets import QApplication, QMainWindow
 
@@ -34,16 +29,7 @@ class MainWindow(QMainWindow):
 
         self.ui.setupUi(self)
         
-        self.system_type_controller = SystemTyperController(self)
-
-        self.soil_resistivity_controller = SoilResistivityController(self)
-
-        self.grid_current_controller = GridCurrentController(self)
-        
-        self.decrement_factor_controller = DecrementFactorController(self)
-        
-        self.safety_standard_controller = SafetyStandardController(self)
-        
+        self.separation_distance_controller = SeparationDistanceController(self)
 
 if __name__ == "__main__":
 

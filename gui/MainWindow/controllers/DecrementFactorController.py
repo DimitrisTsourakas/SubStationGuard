@@ -55,3 +55,22 @@ class DecrementFactorController(BaseController):
             validator_func=validation.is_valid_number,
             error_message="Enter a valid number"
         )
+
+    def extractParametersFromGui(self):
+        def safe_float(text, default=0.0):
+            try:
+                return float(text)
+            except (ValueError, TypeError):
+                return default
+        return {
+            "calcDecrementFactor": str(self.ui.comboBox_16.currentIndex()),
+            "inductiveReactance": safe_float(self.ui.lineEdit_45.text()),
+            "resistanceAtFault": safe_float(self.ui.lineEdit_46.text()),
+            "decrementFactor": safe_float(self.ui.lineEdit_38.text())
+        }
+
+    def resetParameters(self):
+        self.ui.comboBox_16.setCurrentIndex(0)
+        self.ui.lineEdit_45.setText("")
+        self.ui.lineEdit_46.setText("")
+        self.ui.lineEdit_38.setText("")

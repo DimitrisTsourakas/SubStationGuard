@@ -60,6 +60,21 @@ class GridCurrentController(BaseController):
             error_message="Enter a valid number"
         )
 
-        
+    def extractParametersFromGui(self):
+        def safe_float(text, default=0.0):
+            try:
+                return float(text)
+            except (ValueError, TypeError):
+                return default
+        return {
+            "calcMaxGridCurrent": str(self.ui.comboBox_6.currentIndex()),
+            "faultCurrent": safe_float(self.ui.lineEdit_20.text()),
+            "faultDivisionFactor": safe_float(self.ui.lineEdit_21.text()),
+            "maxGridCurrent": safe_float(self.ui.lineEdit_28.text())
+        }
     
-    
+    def resetParameters(self):
+        self.ui.comboBox_6.setCurrentIndex(0)
+        self.ui.lineEdit_20.setText("")
+        self.ui.lineEdit_21.setText("")
+        self.ui.lineEdit_28.setText("")
