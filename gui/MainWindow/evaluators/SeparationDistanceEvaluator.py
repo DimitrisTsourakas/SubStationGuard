@@ -1,9 +1,12 @@
 from data.SeparationDistanceData import SeparationDistanceData
 from .BaseEvaluator import BaseEvaluator
 
+import pyqtgraph as pg
+from PySide6 import QtCore
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+import csv
 import pandas as pd
 import ast
 from scipy.optimize import root_scalar
@@ -133,6 +136,7 @@ class SeparationDistanceEvaluator(BaseEvaluator):
             xs, ys = function._xs, function._ys
 
             if not (min(ys) <= value <= max(ys)):
+                self.logError(f"Value {value} outside interpolated ksp(x) range [{min(ys)}, {max(ys)}]")
                 raise ValueError(f"Value {value} outside interpolated ksp(x) range [{min(ys)}, {max(ys)}]")
             inverse_interp = interp1d(ys, xs, fill_value="extrapolate", bounds_error=False)
             return float(inverse_interp(value))
@@ -143,10 +147,12 @@ class SeparationDistanceEvaluator(BaseEvaluator):
 
         # Precheck: is there a root in bracket?
         if f(a) * f(b) > 0:
+            self.logError(f"No root: f({a})={f(a):.4f}, f({b})={f(b):.4f} have same sign.")
             raise ValueError(f"No root: f({a})={f(a):.4f}, f({b})={f(b):.4f} have same sign.")
         
         result = root_scalar(f, bracket=[a, b], method='brentq')
         if not result.converged:
+            self.logError("Root-finding did not converge.")
             raise RuntimeError("Root-finding did not converge.")
         return result.root
 
@@ -351,11 +357,21 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         if option == 0:
             # --- CSV path: linear interpolation ---
             try:
-                df = pd.read_csv(source, header=None)
+                with open(source, 'r') as f:
+                    sample = f.read(1024)
+                    f.seek(0)
+                    try:
+                        dialect = csv.Sniffer().sniff(sample)
+                        delimiter = dialect.delimiter
+                    except csv.Error:
+                        delimiter = ','
+                df = pd.read_csv(source, sep=delimiter, header=None)
             except Exception as e:
+                self.logError(f"Could not read CSV '{source}': {e!s}")
                 raise SurfacePotentialError(f"Could not read CSV '{source}': {e!s}")
 
             if df.shape[1] < 2:
+                self.logError("CSV must have at least two columns (x, y).")
                 raise SurfacePotentialError("CSV must have at least two columns (x, y).")
 
             xs = df.iloc[:, 0].to_numpy(dtype=float)
@@ -392,8 +408,10 @@ class SeparationDistanceEvaluator(BaseEvaluator):
             node = ast.parse(source, mode="eval")
             for sub in ast.walk(node):
                 if not isinstance(sub, allowed_nodes):
+                    self.logError(f"Disallowed syntax: {type(sub).__name__}")
                     raise SurfacePotentialError(f"Disallowed syntax: {type(sub).__name__}")
                 if isinstance(sub, ast.Name) and sub.id not in safe_names:
+                    self.logError(f"Use of name '{sub.id}' is not allowed")
                     raise SurfacePotentialError(f"Use of name '{sub.id}' is not allowed")
 
             code = compile(node, "<surfacePotential>", "eval")
@@ -401,14 +419,16 @@ class SeparationDistanceEvaluator(BaseEvaluator):
                 try:
                     return eval(code, {"__builtins__": {}}, {**safe_names, "x": x})
                 except Exception as e:
+                    self.logError(f"Error evaluating expression at x={x}: {e!s}")
                     raise SurfacePotentialError(f"Error evaluating expression at x={x}: {e!s}")
 
             return f
 
         else:
+            self.logError("Invalid option; must be 0 (CSV) or 1 (expression).")
             raise SurfacePotentialError("Invalid option; must be 0 (CSV) or 1 (expression).")
 
-    def plotCreation(self, separationDistanceDataObj: SeparationDistanceData, targetView: QGraphicsView):
+    def plotCreation(self, separationDistanceDataObj: SeparationDistanceData, plotWidget: pg.PlotWidget):
         """ Main function responsible for the creation of plots. Function will setup plot parameters
         like title, labels etc. according to the curve that is going to be generated. System Type and
         Safety Standard determine the final parameter setup. Additionally, the function evaluates and
@@ -499,17 +519,17 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         x_values = np.linspace(0, 500, 1000000)
         y_values = [formula(x) for x in x_values]
 
-        figure = Figure(figsize=(8, 6))
-        canvas = FigureCanvas(figure)
-        plot = figure.add_subplot(111)
-        
-        # Create the plot
-        plot.set_title(title)
-        plot.set_xlabel(xLabel)
-        plot.set_ylabel(yLabel)
-        plot.grid(alpha=.4, linestyle='--')
-        plot.plot(x_values, y_values, label=formulaLabel)
-        plot.legend()
+        plotWidget.clear()
+
+        # Create a PlotWidget and add it to the QGraphicsView
+        plotWidget.setBackground('w')
+        plotWidget.setTitle(title, color='k', size='12pt')
+        plotWidget.setLabel('left', yLabel, color='k', size='10pt')
+        plotWidget.setLabel('bottom', xLabel, color='k', size='10pt')
+        plotWidget.showGrid(x=True, y=True, alpha=0.4)
+
+        # Plot the curve
+        plotWidget.plot(x_values, y_values, pen=pg.mkPen('b', width=2))
 
         # Case to be evaluated and be shown in the Plot
         # Calculate Ground Potential Rise
@@ -521,24 +541,27 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         # Set the evaluation point to highlight
         highlight_x = x_critical
         highlight_y = formula(x_critical)
+        plotWidget.plot([x_critical], [highlight_y], pen=None, symbol='o', symbolSize=10, symbolBrush='r')
 
         self.logInfo(f"Point to be highlighted in the Curve: ({highlight_x},{highlight_y})")
         
-        # Add vertical and horizontal lines for the x and y axes
-        plot.axvline(0, color='black')
-        plot.axhline(0, color='black')
-        # Add a vertical line at the specified x coordinate
-        plot.axvline(highlight_x, color='red', linestyle='--', label='Vertical Line')
-        # Add a horizontal line at the specified y coordinate
-        plot.axhline(highlight_y, color='red', linestyle='--', label='Horizontal Line')
-        # Add a marker for the specified point
-        plot.plot(highlight_x, highlight_y, 's', color='red')
-        # annotate the line with a label
-        plot.annotate(f'ρ = {ρ}', xy=(-3, highlight_y), xytext=(-5, 1.3 * highlight_y), arrowprops=dict(facecolor='black', arrowstyle='->'))
-        #plot.show()
+        vLine = pg.InfiniteLine(pos=0, angle=90, pen=pg.mkPen('k', style=QtCore.Qt.SolidLine))  # Vertical at x=0
+        hLine = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen('k', style=QtCore.Qt.SolidLine))   # Horizontal at y=0
+        plotWidget.addItem(vLine)
+        plotWidget.addItem(hLine)
 
-        # Render into the QGraphicsView
-        scene = QGraphicsScene()
-        scene.addWidget(canvas)
-        targetView.setScene(scene)
-        targetView.show()
+        # Add vertical line at highlight_x
+        highlightVLine = pg.InfiniteLine(pos=highlight_x, angle=90, pen=pg.mkPen('r', style=QtCore.Qt.DashLine))
+        plotWidget.addItem(highlightVLine)
+
+        # Add horizontal line at highlight_y
+        highlightHLine = pg.InfiniteLine(pos=highlight_y, angle=0, pen=pg.mkPen('r', style=QtCore.Qt.DashLine))
+        plotWidget.addItem(highlightHLine)
+
+        # Annotate with text and arrow
+        text = pg.TextItem(f'ρ = {ρ:.2f}', color='k', anchor=(0, 1))
+        text.setPos(-50, highlight_y)
+        plotWidget.addItem(text)
+
+        legend = plotWidget.addLegend(offset=(30, 30))
+        legend.addItem(plotWidget.listDataItems()[0], formulaLabel)

@@ -5,6 +5,7 @@ from .SoilResistivityController import SoilResistivityController
 from .SafetyStandardController import SafetyStandardController
 from .DecrementFactorController import DecrementFactorController
 from data.SeparationDistanceData import SeparationDistanceData
+from PySide6.QtGui import QTextCursor, QTextCharFormat, QColor
 from evaluators.SeparationDistanceEvaluator import SeparationDistanceEvaluator
 
 class SeparationDistanceController(BaseController):
@@ -39,6 +40,7 @@ class SeparationDistanceController(BaseController):
         self.gridCurrentController.resetParameters()
         self.safetyStandardController.resetParameters()
         self.decrementalFactorController.resetParameters()
+        self.ui.graphicsView.clear()
 
     def evaluateAndPlot(self):
         data = self.extractAllParameters()
@@ -46,4 +48,19 @@ class SeparationDistanceController(BaseController):
         evaluator.plotCreation(data, self.ui.graphicsView)
 
     def logToGui(self, message: str):
-        self.ui.plainTextEdit.appendPlainText(message)
+        cursor = self.ui.plainTextEdit.textCursor()
+        cursor.movePosition(QTextCursor.End)
+        fmt = QTextCharFormat()
+        # Set color based on log level
+        if message.startswith("<E"):  # Error
+            fmt.setForeground(QColor("red"))
+        elif message.startswith("<W"):  # Warning
+            fmt.setForeground(QColor("orange"))
+        else:  # Info
+            fmt.setForeground(QColor("black"))
+        # Insert the text with the chosen format
+        cursor.insertText(message + "\n", fmt)
+
+        # Auto scroll to the bottom
+        self.ui.plainTextEdit.setTextCursor(cursor)
+        self.ui.plainTextEdit.ensureCursorVisible()

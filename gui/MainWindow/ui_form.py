@@ -16,12 +16,13 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFormLayout, QGraphicsView,
-    QGridLayout, QGroupBox, QHBoxLayout, QLabel,
-    QLayout, QLineEdit, QMainWindow, QMenu,
-    QMenuBar, QPlainTextEdit, QPushButton, QSizePolicy,
-    QStatusBar, QTabWidget, QToolButton, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFormLayout, QGridLayout,
+    QGroupBox, QHBoxLayout, QLabel, QLayout,
+    QLineEdit, QMainWindow, QMenu, QMenuBar,
+    QPlainTextEdit, QPushButton, QSizePolicy, QStatusBar,
+    QTabWidget, QToolButton, QVBoxLayout, QWidget)
+
+from pyqtgraph import PlotWidget
 import rc_resources
 
 class Ui_MainWindow(object):
@@ -162,6 +163,30 @@ class Ui_MainWindow(object):
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
+        self.tabWidget_2 = QTabWidget(self.centralwidget)
+        self.tabWidget_2.setObjectName(u"tabWidget_2")
+        self.tabWidget_2.setEnabled(True)
+        self.tab_5 = QWidget()
+        self.tab_5.setObjectName(u"tab_5")
+        self.verticalLayout_2 = QVBoxLayout(self.tab_5)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.plainTextEdit = QPlainTextEdit(self.tab_5)
+        self.plainTextEdit.setObjectName(u"plainTextEdit")
+        self.plainTextEdit.setReadOnly(True)
+        self.plainTextEdit.setBackgroundVisible(False)
+        self.plainTextEdit.setCenterOnScroll(False)
+
+        self.verticalLayout.addWidget(self.plainTextEdit)
+
+
+        self.verticalLayout_2.addLayout(self.verticalLayout)
+
+        self.tabWidget_2.addTab(self.tab_5, "")
+
+        self.gridLayout.addWidget(self.tabWidget_2, 1, 0, 1, 2)
+
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setEnabled(True)
@@ -1303,34 +1328,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
 
-        self.graphicsView = QGraphicsView(self.centralwidget)
+        self.graphicsView = PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName(u"graphicsView")
 
         self.gridLayout.addWidget(self.graphicsView, 0, 1, 1, 1)
-
-        self.tabWidget_2 = QTabWidget(self.centralwidget)
-        self.tabWidget_2.setObjectName(u"tabWidget_2")
-        self.tabWidget_2.setEnabled(True)
-        self.tab_5 = QWidget()
-        self.tab_5.setObjectName(u"tab_5")
-        self.verticalLayout_2 = QVBoxLayout(self.tab_5)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.plainTextEdit = QPlainTextEdit(self.tab_5)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setReadOnly(True)
-        self.plainTextEdit.setBackgroundVisible(False)
-        self.plainTextEdit.setCenterOnScroll(False)
-
-        self.verticalLayout.addWidget(self.plainTextEdit)
-
-
-        self.verticalLayout_2.addLayout(self.verticalLayout)
-
-        self.tabWidget_2.addTab(self.tab_5, "")
-
-        self.gridLayout.addWidget(self.tabWidget_2, 1, 0, 1, 2)
 
 
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
@@ -1407,8 +1408,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1424,6 +1425,8 @@ class Ui_MainWindow(object):
         self.actionSave_Plot.setText(QCoreApplication.translate("MainWindow", u"Save Plot...", None))
         self.evaluateButton.setText(QCoreApplication.translate("MainWindow", u"Evaluate", None))
         self.resetButton.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
+        self.plainTextEdit.setPlainText("")
+        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Execution Logs", None))
         self.groupBox_9.setTitle("")
         self.label_80.setText(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -1707,8 +1710,6 @@ class Ui_MainWindow(object):
         self.label_72.setText(QCoreApplication.translate("MainWindow", u"V", None))
         self.label_89.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"Safety Standard Constants", None))
-        self.plainTextEdit.setPlainText("")
-        self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Execution Logs", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
         self.menuView.setTitle(QCoreApplication.translate("MainWindow", u"View", None))

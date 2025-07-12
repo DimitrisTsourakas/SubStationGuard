@@ -505,6 +505,43 @@
     </item>
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0" colspan="2">
+       <widget class="QTabWidget" name="tabWidget_2">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="tab_5">
+         <attribute name="title">
+          <string>Execution Logs</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QPlainTextEdit" name="plainTextEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="plainText">
+               <string/>
+              </property>
+              <property name="backgroundVisible">
+               <bool>false</bool>
+              </property>
+              <property name="centerOnScroll">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
       <item row="0" column="0">
        <widget class="QTabWidget" name="tabWidget">
         <property name="enabled">
@@ -2896,44 +2933,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QGraphicsView" name="graphicsView"/>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <widget class="QTabWidget" name="tabWidget_2">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="tab_5">
-         <attribute name="title">
-          <string>Execution Logs</string>
-         </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout">
-            <item>
-             <widget class="QPlainTextEdit" name="plainTextEdit">
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-              <property name="plainText">
-               <string/>
-              </property>
-              <property name="backgroundVisible">
-               <bool>false</bool>
-              </property>
-              <property name="centerOnScroll">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </widget>
+       <widget class="PlotWidget" name="graphicsView"/>
       </item>
      </layout>
     </item>
@@ -3025,6 +3025,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>toolButton_63</tabstop>
   <tabstop>comboBox_9</tabstop>
