@@ -134,8 +134,10 @@ class SafetyStandardController(BaseController):
                 return float(text)
             except (ValueError, TypeError):
                 return default
+        def safe_str(text, default=""):
+            return text if text is not None else default
         return {
-            "safetyStandard": str(self.ui.comboBox_8.currentIndex()),
+            "safetyStandard": safe_str(self.ui.comboBox_8.currentIndex()),
             "bodyResistance": safe_float(self.ui.lineEdit_13.text()),
             "energyFactor": safe_float(self.ui.lineEdit_14.text()),
             "bodyCurrentLimit": safe_float(self.ui.lineEdit_24.text()),

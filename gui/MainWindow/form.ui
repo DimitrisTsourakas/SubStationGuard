@@ -504,10 +504,7 @@
      </layout>
     </item>
     <item row="0" column="0">
-     <layout class="QGridLayout" name="gridLayout" columnstretch="7,10">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
-      </property>
+     <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QTabWidget" name="tabWidget">
         <property name="enabled">

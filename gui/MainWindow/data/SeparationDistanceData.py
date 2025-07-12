@@ -9,6 +9,7 @@ class SeparationDistanceData:
     calcSoilResistivity: str = None             # "0" (Calculate Soil Resistivity) "1" (Do not calculate Soil Resistivity)
     calcMaxGridCurrent: str = None              # "0" (Calculate Maximum Gid Current) "1" (Do not calculate Maximum Gid Current)
     calcDecrementFactor: str = None             # "0" (Calculate Decrement Factor) "1" (Do not calculate Decrement Factor)
+    surfacePotentialFuncOption: str = None      # "0" (Data Points from CSV File) "1" (Custom Mathematical Expression)
 
     # Electrical parameters
     geometricFactor: float = None               # kg (m^-1)

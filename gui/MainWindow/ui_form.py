@@ -162,7 +162,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setEnabled(True)
@@ -1333,8 +1332,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.tabWidget_2, 1, 0, 1, 2)
 
-        self.gridLayout.setColumnStretch(0, 7)
-        self.gridLayout.setColumnStretch(1, 10)
 
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 

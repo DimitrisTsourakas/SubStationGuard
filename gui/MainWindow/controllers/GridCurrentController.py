@@ -66,8 +66,10 @@ class GridCurrentController(BaseController):
                 return float(text)
             except (ValueError, TypeError):
                 return default
+        def safe_str(text, default=""):
+            return text if text is not None else default
         return {
-            "calcMaxGridCurrent": str(self.ui.comboBox_6.currentIndex()),
+            "calcMaxGridCurrent": safe_str(self.ui.comboBox_6.currentIndex()),
             "faultCurrent": safe_float(self.ui.lineEdit_20.text()),
             "faultDivisionFactor": safe_float(self.ui.lineEdit_21.text()),
             "maxGridCurrent": safe_float(self.ui.lineEdit_28.text())

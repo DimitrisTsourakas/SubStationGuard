@@ -43,7 +43,7 @@ class SeparationDistanceController(BaseController):
     def evaluateAndPlot(self):
         data = self.extractAllParameters()
         evaluator = SeparationDistanceEvaluator(logFunc=self.logToGui)
-        evaluator.plotCreation(data)
+        evaluator.plotCreation(data, self.ui.graphicsView)
 
     def logToGui(self, message: str):
         self.ui.plainTextEdit.appendPlainText(message)

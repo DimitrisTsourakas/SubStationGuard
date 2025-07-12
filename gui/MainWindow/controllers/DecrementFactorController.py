@@ -62,8 +62,10 @@ class DecrementFactorController(BaseController):
                 return float(text)
             except (ValueError, TypeError):
                 return default
+        def safe_str(text, default=""):
+            return text if text is not None else default
         return {
-            "calcDecrementFactor": str(self.ui.comboBox_16.currentIndex()),
+            "calcDecrementFactor": safe_str(self.ui.comboBox_16.currentIndex()),
             "inductiveReactance": safe_float(self.ui.lineEdit_45.text()),
             "resistanceAtFault": safe_float(self.ui.lineEdit_46.text()),
             "decrementFactor": safe_float(self.ui.lineEdit_38.text())

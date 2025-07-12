@@ -51,8 +51,10 @@ class SoilResistivityController(BaseController):
                 return float(text)
             except (ValueError, TypeError):
                 return default
+        def safe_str(text, default=""):
+            return text if text is not None else default
         return {
-            "calcSoilResistivity": str(self.ui.comboBox_7.currentIndex()),
+            "calcSoilResistivity": safe_str(self.ui.comboBox_7.currentIndex()),
             "groundResistance": safe_float(self.ui.lineEdit_22.text()),
             "soilResistivity": safe_float(self.ui.lineEdit_23.text())
         }

@@ -46,8 +46,8 @@ class SystemTypeController(BaseController):
             self,
             line_edit=self.ui.lineEdit_33,
             error_label=self.ui.label_101,
-            validator_func=validation.is_valid_number,
-            error_message="Enter a valid fuction"
+            validator_func=validation.is_valid_function,
+            error_message="Enter a valid fuction of x"
         )
 
         # Validate Fault Duration inputs
@@ -72,15 +72,24 @@ class SystemTypeController(BaseController):
                 return float(text)
             except (ValueError, TypeError):
                 return default
+        def safe_str(text, default=""):
+            return text if text is not None else default
+        option = self.ui.comboBox_10.currentIndex()
         return {
             "systemType": str(self.ui.comboBox_9.currentText()),
             "geometricFactor": safe_float(self.ui.lineEdit_32.text()),
-            "surfacePotentialFunc": self.ui.lineEdit_33.text(),
+            "surfacePotentialFuncOption": option,
+            "surfacePotentialFunc": (
+                safe_str(self.ui.lineEdit_33.text())
+                if option
+                else safe_str(self.ui.lineEdit_35.text())
+            ),
             "faultDuration": safe_float(self.ui.lineEdit_34.text()),
         }
     
     def resetParameters(self):
         self.ui.comboBox_9.setCurrentIndex(0)
+        self.ui.comboBox_10.setCurrentIndex(0)
         self.ui.lineEdit_32.setText("")
         self.ui.lineEdit_33.setText("")
         self.ui.lineEdit_34.setText("")

@@ -1,3 +1,5 @@
+import ast, math
+
 def setup_live_validation(self, line_edit, error_label, validator_func, error_message):
         def validate():
             if not line_edit.isVisible():
@@ -26,9 +28,33 @@ def setup_live_validation(self, line_edit, error_label, validator_func, error_me
 
         validate()
 
-def is_valid_number(text):
+def is_valid_number(text: str) -> bool:
     try:
         float(text)
         return True
     except ValueError:
         return False
+
+def is_valid_function(text: str) -> bool:
+    try:
+        node = ast.parse(text, mode="eval")
+    except SyntaxError:
+        return False
+
+    allowed = (
+        ast.Expression, ast.BinOp, ast.UnaryOp, ast.Call,
+        ast.Name, ast.Load, ast.Constant,
+        ast.Add, ast.Sub, ast.Mult, ast.Div, ast.Pow,
+        ast.USub, ast.UAdd,
+    )
+    safe_names = {"x"} | {
+        name for name in dir(math) if not name.startswith("_")
+    }
+
+    for sub in ast.walk(node):
+        if not isinstance(sub, allowed):
+            return False
+        if isinstance(sub, ast.Name) and sub.id not in safe_names:
+            return False
+
+    return True
