@@ -382,6 +382,9 @@ class SeparationDistanceEvaluator(BaseEvaluator):
             xs, ys = xs[sort_idx], ys[sort_idx]
 
             def f(x: float) -> float:
+                if x <= 0:
+                    self.logError(f"Invalid x={x}: must be > 0.")
+                    raise SurfacePotentialError(f"x must be greater than 0, got {x}")
                 # out‐of‐bounds behavior: extrapolate with endpoint values
                 return float(np.interp(x, xs, ys, left=ys[0], right=ys[-1]))
             
@@ -416,6 +419,9 @@ class SeparationDistanceEvaluator(BaseEvaluator):
 
             code = compile(node, "<surfacePotential>", "eval")
             def f(x: float) -> float:
+                if x <= 0:
+                    self.logError(f"Invalid x={x}: must be > 0.")
+                    raise SurfacePotentialError(f"x must be greater than 0, got {x}")
                 try:
                     return eval(code, {"__builtins__": {}}, {**safe_names, "x": x})
                 except Exception as e:
@@ -558,9 +564,9 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         highlightHLine = pg.InfiniteLine(pos=highlight_y, angle=0, pen=pg.mkPen('r', style=QtCore.Qt.DashLine))
         plotWidget.addItem(highlightHLine)
 
-        # Annotate with text and arrow
+        # Annotate with text
         text = pg.TextItem(f'ρ = {ρ:.2f}', color='k', anchor=(0, 1))
-        text.setPos(-50, highlight_y)
+        text.setPos(-1, highlight_y)
         plotWidget.addItem(text)
 
         legend = plotWidget.addLegend(offset=(30, 30))

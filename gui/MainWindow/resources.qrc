@@ -3,5 +3,6 @@
         <file>images/info-tooltip.png</file>
         <file>images/SubStationGuard.png</file>
         <file>images/upload.png</file>
+        <file>images/auth-logo.png</file>
     </qresource>
 </RCC>

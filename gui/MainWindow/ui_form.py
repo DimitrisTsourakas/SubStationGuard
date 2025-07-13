@@ -144,23 +144,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_2 = QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.evaluateButton = QPushButton(self.centralwidget)
-        self.evaluateButton.setObjectName(u"evaluateButton")
-        self.evaluateButton.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.horizontalLayout.addWidget(self.evaluateButton)
-
-        self.resetButton = QPushButton(self.centralwidget)
-        self.resetButton.setObjectName(u"resetButton")
-        self.resetButton.setCursor(QCursor(Qt.PointingHandCursor))
-
-        self.horizontalLayout.addWidget(self.resetButton)
-
-
-        self.gridLayout_2.addLayout(self.horizontalLayout, 1, 0, 1, 1)
-
+        self.gridLayout_2.setContentsMargins(-1, -1, -1, 0)
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.tabWidget_2 = QTabWidget(self.centralwidget)
@@ -1336,6 +1320,53 @@ class Ui_MainWindow(object):
 
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.evaluateButton = QPushButton(self.centralwidget)
+        self.evaluateButton.setObjectName(u"evaluateButton")
+        self.evaluateButton.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout.addWidget(self.evaluateButton)
+
+        self.resetButton = QPushButton(self.centralwidget)
+        self.resetButton.setObjectName(u"resetButton")
+        self.resetButton.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout.addWidget(self.resetButton)
+
+
+        self.gridLayout_2.addLayout(self.horizontalLayout, 1, 0, 1, 1)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label_3 = QLabel(self.centralwidget)
+        self.label_3.setObjectName(u"label_3")
+
+        self.horizontalLayout_2.addWidget(self.label_3)
+
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setMaximumSize(QSize(30, 30))
+        self.label_2.setPixmap(QPixmap(u":/images/images/auth-logo.png"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.horizontalLayout_2.addWidget(self.label_2)
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        font2 = QFont()
+        font2.setFamilies([u"Sitka"])
+        font2.setBold(True)
+        self.label.setFont(font2)
+        self.label.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.horizontalLayout_2.addWidget(self.label)
+
+        self.horizontalLayout_2.setStretch(0, 10)
+
+        self.gridLayout_2.addLayout(self.horizontalLayout_2, 4, 0, 2, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -1423,8 +1454,6 @@ class Ui_MainWindow(object):
         self.actionShow_Parameters.setText(QCoreApplication.translate("MainWindow", u"Show Parameters", None))
         self.actionShow_Plot.setText(QCoreApplication.translate("MainWindow", u"Show Plot", None))
         self.actionSave_Plot.setText(QCoreApplication.translate("MainWindow", u"Save Plot...", None))
-        self.evaluateButton.setText(QCoreApplication.translate("MainWindow", u"Evaluate", None))
-        self.resetButton.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.plainTextEdit.setPlainText("")
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Execution Logs", None))
         self.groupBox_9.setTitle("")
@@ -1710,6 +1739,11 @@ class Ui_MainWindow(object):
         self.label_72.setText(QCoreApplication.translate("MainWindow", u"V", None))
         self.label_89.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"Safety Standard Constants", None))
+        self.evaluateButton.setText(QCoreApplication.translate("MainWindow", u"Evaluate", None))
+        self.resetButton.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
+        self.label_3.setText("")
+        self.label_2.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u00a9 Aristotle University of Thessaloniki. All rights reserved.", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
         self.menuView.setTitle(QCoreApplication.translate("MainWindow", u"View", None))
