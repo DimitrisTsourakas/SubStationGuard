@@ -6,7 +6,10 @@ from .SafetyStandardController import SafetyStandardController
 from .DecrementFactorController import DecrementFactorController
 from data.SeparationDistanceData import SeparationDistanceData
 from PySide6.QtGui import QTextCursor, QTextCharFormat, QColor
+from PySide6.QtWidgets import QFileDialog, QMessageBox
 from evaluators.SeparationDistanceEvaluator import SeparationDistanceEvaluator
+from dataclasses import asdict
+import json
 
 class SeparationDistanceController(BaseController):
     def __init__(self, parent=None):
@@ -23,6 +26,8 @@ class SeparationDistanceController(BaseController):
         self.ui.actionShow_Parameters.toggled.connect(self.ui.tabWidget.setVisible)
         self.ui.actionShow_Logs.toggled.connect(self.ui.tabWidget_2.setVisible)
         self.ui.actionShow_Plot.toggled.connect(self.ui.graphicsView.setVisible)
+        self.ui.actionImport_Parameters.triggered.connect(self.importParameters)
+        self.ui.actionExport_Parameters.triggered.connect(self.exportParameters)
 
     def extractAllParameters(self) -> SeparationDistanceData:
         params = {
@@ -64,3 +69,67 @@ class SeparationDistanceController(BaseController):
         # Auto scroll to the bottom
         self.ui.plainTextEdit.setTextCursor(cursor)
         self.ui.plainTextEdit.ensureCursorVisible()
+
+    def importParameters(self):
+        path, _ = QFileDialog.getOpenFileName(self.parent, "Import Parameters", "", "JSON Files (*.json)")
+        if not path:
+            return
+        try:
+            with open(path, "r") as f:
+                data = json.load(f)
+            self.loadParameters(data)
+            QMessageBox.information(self.parent, "Import", "Parameters imported successfully.")
+        except Exception as e:
+            QMessageBox.critical(self.parent, "Import Error", str(e))
+
+    def exportParameters(self):
+        path, _ = QFileDialog.getSaveFileName(self.parent, "Export Parameters", "", "JSON Files (*.json)")
+        if not path:
+            return
+        try:
+            data = asdict(self.extractAllParameters())
+            with open(path, "w") as f:
+                json.dump(data, f, indent=3)
+            QMessageBox.information(self.parent, "Export", "Parameters exported successfully.")
+        except Exception as e:
+            QMessageBox.critical(self.parent, "Export Error", str(e))
+
+    def loadParameters(self, data):
+        # Basic config
+        self.ui.comboBox_9.setCurrentText(str(data.get("systemType", "TN")))                  # "TN" or "TT"
+        self.ui.comboBox_8.setCurrentText(str(data.get("safetyStandard", "0")))               # "0" (IEEE) or "1" (CENELEC)
+        self.ui.comboBox_7.setCurrentText(str(data.get("calcSoilResistivity", "0")))          # "0" (Calculate Soil Resistivity) "1" (Do not calculate Soil Resistivity)
+        self.ui.comboBox_6.setCurrentText(str(data.get("calcMaxGridCurrent", "0")))           # "0" (Calculate Maximum Gid Current) "1" (Do not calculate Maximum Gid Current)
+        self.ui.comboBox_16.setCurrentText(str(data.get("calcDecrementFactor", "0")))         # "0" (Calculate Decrement Factor) "1" (Do not calculate Decrement Factor)
+        self.ui.comboBox_10.setCurrentText(str(data.get("surfacePotentialFuncOption", "0")))  # "0" (Data Points from CSV File) "1" (Custom Mathematical Expression)
+
+        # Electrical parameters
+        self.ui.lineEdit_32.setText(str(data.get("geometricFactor", "")))             # kg (m^-1)
+        self.ui.lineEdit_23.setText(str(data.get("soilResistivity", "")))             # ρ (Ωm)
+        self.ui.lineEdit_22.setText(str(data.get("groundResistance", "")))            # Rg (Ω)
+
+        self.ui.lineEdit_20.setText(str(data.get("faultCurrent", "")))                # If (A)
+        self.ui.lineEdit_38.setText(str(data.get("decrementFactor", "")))             # Df (p.u.)
+        self.ui.lineEdit_21.setText(str(data.get("faultDivisionFactor", "")))         # Sf (p.u.)
+        self.ui.lineEdit_45.setText(str(data.get("inductiveReactance", "")))          # X (Ω)
+        self.ui.lineEdit_46.setText(str(data.get("resistanceAtFault", "")))           # R (Ω)
+        self.ui.lineEdit_34.setText(str(data.get("faultDuration", "")))               # tf (s)
+
+        # Human factors
+        self.ui.lineEdit_13.setText(str(data.get("bodyResistance", "")))              # Rb (Ω)
+        self.ui.lineEdit_14.setText(str(data.get("energyFactor", "")))                # k (As^0.5)
+        self.ui.lineEdit_24.setText(str(data.get("bodyCurrentLimit", "")))            # IB (A)
+        self.ui.lineEdit_25.setText(str(data.get("bodyImpedance", "")))               # ZT (Ω)
+        self.ui.lineEdit_26.setText(str(data.get("heartFactor", "")))                 # HF (p.u.)
+        self.ui.lineEdit_29.setText(str(data.get("bodyFactor", "")))                  # BF (p.u.)
+        self.ui.lineEdit_30.setText(str(data.get("constantF", "")))                   # F (p.u.)
+        self.ui.lineEdit_31.setText(str(data.get("voltageLimit", "")))                # Vlim (V)
+
+        # Functional
+        if str(data.get("surfacePotentialFuncOption", "0")) == "0":
+            self.ui.lineEdit_35.setText(str(data.get("surfacePotentialFunc", "")))     # ksp(x) (function)
+        else:
+            self.ui.lineEdit_33.setText(str(data.get("surfacePotentialFunc", "")))     # ksp(x) (function)
+
+        # Results (optional)
+        self.ui.lineEdit_28.setText(str(data.get("maxGridCurrent", "")))              # IG (A)
