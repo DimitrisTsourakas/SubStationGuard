@@ -98,12 +98,12 @@ class SeparationDistanceController(BaseController):
 
     def loadParameters(self, data):
         # Basic config
-        self.ui.comboBox_9.setCurrentText(str(data.get("systemType", "TN")))                  # "TN" or "TT"
-        self.ui.comboBox_8.setCurrentText(str(data.get("safetyStandard", "0")))               # "0" (IEEE) or "1" (CENELEC)
-        self.ui.comboBox_7.setCurrentText(str(data.get("calcSoilResistivity", "0")))          # "0" (Calculate Soil Resistivity) "1" (Do not calculate Soil Resistivity)
-        self.ui.comboBox_6.setCurrentText(str(data.get("calcMaxGridCurrent", "0")))           # "0" (Calculate Maximum Gid Current) "1" (Do not calculate Maximum Gid Current)
-        self.ui.comboBox_16.setCurrentText(str(data.get("calcDecrementFactor", "0")))         # "0" (Calculate Decrement Factor) "1" (Do not calculate Decrement Factor)
-        self.ui.comboBox_10.setCurrentText(str(data.get("surfacePotentialFuncOption", "0")))  # "0" (Data Points from CSV File) "1" (Custom Mathematical Expression)
+        self.ui.comboBox_9.setCurrentIndex(self.ui.comboBox_9.findText(str(data.get("systemType", "TN"))))  # "TN" or "TT"
+        self.ui.comboBox_8.setCurrentIndex(int(data.get("safetyStandard", 0)))                              # "0" (IEEE) or "1" (CENELEC)
+        self.ui.comboBox_7.setCurrentIndex(int(data.get("calcSoilResistivity", 0)))                         # "0" (Calculate Soil Resistivity) "1" (Do not calculate Soil Resistivity)
+        self.ui.comboBox_6.setCurrentIndex(int(data.get("calcMaxGridCurrent", 0)))                          # "0" (Calculate Maximum Gid Current) "1" (Do not calculate Maximum Gid Current)
+        self.ui.comboBox_16.setCurrentIndex(int(data.get("calcDecrementFactor", 0)))                        # "0" (Calculate Decrement Factor) "1" (Do not calculate Decrement Factor)
+        self.ui.comboBox_10.setCurrentIndex(int(data.get("surfacePotentialFuncOption", 0)))                 # "0" (Data Points from CSV File) "1" (Custom Mathematical Expression)
 
         # Electrical parameters
         self.ui.lineEdit_32.setText(str(data.get("geometricFactor", "")))             # kg (m^-1)
