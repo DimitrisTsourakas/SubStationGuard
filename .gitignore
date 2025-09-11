@@ -1,4 +1,22 @@
+# Python
 __pycache__
 __init__.py
-.vscode
+*.pyc
+*.pyo
+*.pyd
 .qt_for_python
+
+# Virtual envs
+venv/
+.venv/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Logs
+*.log
+
+# VS-Code
+.vscode
