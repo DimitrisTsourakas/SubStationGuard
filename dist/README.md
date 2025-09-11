@@ -40,9 +40,11 @@ pyinstaller mainwindow.spec
 
 3) An executable will be generated under a newly created folder here: `gui/Mainwindow/dist/SubStationGuard/SubStationGuard.exe`
 
-! Notes
-    The build folder is used by PyInstaller to collect and prepare the files for bundling, it contains the results of analysis and some additional logs. For the most part, you can ignore the contents of this folder, unless you’re trying to debug issues.
-    The dist (for "distribution") folder contains the files to be distributed. This includes application, bundled as an executable file, together with any associated libraries (for example PyQt6). Everything necessary to run the application will be in this folder, meaning you can take this folder and distribute it to someone else to run the app.
+> **Notes:**  
+> The `build` folder is used by PyInstaller to collect and prepare files for bundling. It contains the results of analysis and additional logs. In most cases, you can ignore this folder unless you are debugging issues.
+>
+> The `dist` (short for "distribution") folder contains the files ready for distribution. This includes the application bundled as an executable, along with any associated libraries (e.g., PyQt6). Everything needed to run the application is included in this folder, so you can share the entire folder with others to run the app.
+
 
 ### Windows Installer
 
