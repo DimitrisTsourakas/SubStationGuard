@@ -10,7 +10,9 @@ class GridCurrentController(BaseController):
 
         self.parent = parent
 
+        # =========================================================================================
         # Calculate Maximum Grid Current according to IEEE Std 80
+        # =========================================================================================
 
         # Make error labels invisible
         self.ui.label_97.setVisible(False)
@@ -32,7 +34,67 @@ class GridCurrentController(BaseController):
 
         # Intercept show and hide events of comboBox_16 to show or hide widgets
         self.ui.comboBox_16.installEventFilter(self)
+
+        # =========================================================================================
+        # Setup Buttons for parameters extended information
+        # =========================================================================================
         
+        # Info Button - Calculate Maximum Grid Current according to IEEE Std 80
+        self.ui.toolButton_43.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Calculation options of Maximum Grid Current",
+            "<b>Description:</b> Determines the way Maximum Grid Current is calculated.<br>"
+            "<b>Options:</b>"
+            "<div style='margin-left:20px'><b>Option 1:</b> Calculate the Maximum Grid Current (IG) "
+            "considering the symmetrical ground fault current (If), decrement factor accounting for "
+            "the dc offset of the fault current (Df) and fault current division factor, which "
+            "considers fault current return paths additional to the ground (Sf) using the "
+            "following calculation algorithm:"
+            "<pre>IG = If · Df · Sf</pre></div>"
+            "<div style='margin-left:20px'><b>Option 2:</b> Directly provide a user-defined Maximum "
+            "Grid Current (IG) in A</div>"
+            )
+        )
+
+        # Info Button - Symmetrical Ground Fault Current
+        self.ui.toolButton_44.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Symmetrical Ground Fault Current (If)",
+            "<b>Description:</b> Maximum fault current supplied by the system in A.<br>"
+            "<b>Symbol:</b> If<br>"
+            "<b>Range:</b> Depends on system; typically kA range<br>"
+            "<b>Unit:</b> A"
+            )
+        )
+
+        # Info Button - Fault Current Division Factor
+        self.ui.toolButton_45.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Fault Current Division Factor (Sf)",
+            "<b>Description:</b> Fault current division factor, which considers fault current "
+            "return paths additional to the ground in p.u.<br>"
+            "<b>Symbol:</b> Sf<br>"
+            "<b>Range:</b> 0-1<br>"
+            "<b>Unit:</b> p.u."
+            )
+        )
+
+        # Info Button - Maximum Grid Current
+        self.ui.toolButton_46.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Maximum Grid Current (IG)",
+            "<b>Description:</b> Maximum current entering the grounding system during a fault "
+            "in A.<br>"
+            "<b>Symbol:</b> IG<br>"
+            "<b>Range:</b> typically kA range<br>"
+            "<b>Unit:</b> A"
+            )
+        )
+        
+        # =========================================================================================
+        # Validation of input Parameters
+        # =========================================================================================
+
         # Validate Symmetrical Ground Fault Current inputs 
         validation.setup_live_validation(
             self,

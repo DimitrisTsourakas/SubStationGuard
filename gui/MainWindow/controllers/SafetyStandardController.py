@@ -10,7 +10,9 @@ class SafetyStandardController(BaseController):
 
         self.parent = parent
 
+        # =========================================================================================
         # Safety Standard
+        # =========================================================================================
 
         # Make error labels invisible
         self.ui.label_89.setVisible(False)
@@ -41,7 +43,127 @@ class SafetyStandardController(BaseController):
 
         # Setup Safety Standard based on System Type of MV/LV Substation
         self.ui.comboBox_9.currentTextChanged.connect(self.update_safety_standard_options)
-        
+
+        # =========================================================================================
+        # Setup Buttons for parameters extended information
+        # =========================================================================================
+
+        # Info Button - Safety Standard
+        self.ui.toolButton_50.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Safety Standard",
+                "<b>Description:</b> Standard applied for safety criteria in substation grounding "
+                "design.<br>"
+                "<b>Options:</b>"
+                "<div style='margin-left:20px'><b>IEEE Std 80:</b> Guide for Safety in AC "
+                "Substation Grounding (focus on step and touch voltage criteria, mainly applied "
+                "in North America).</div>"
+                "<div style='margin-left:20px'><b>CENELEC EN 50522:</b> Earthing of Power "
+                "Installations Exceeding 1 kV AC (European standard emphasizing soil resistivity "
+                "measurement and design rules).</div>"
+                "<b>Symbol:</b> safetyStandard<br>"
+                "<b>Values:</b> 0 (IEEE), 1 (CENELEC)<br>"
+                "<b>Unit:</b> N/A"
+            )
+        )
+
+        # Info Button - Body Resistance
+        self.ui.toolButton_51.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Body Resistance (Rb)",
+                "<b>Description:</b> Human body resistance between contact points, depends on skin "
+                "condition.<br>"
+                "<b>Symbol:</b> Rb<br>"
+                "<b>Range:</b> 500–1,000 Ω (dry), lower if wet<br>"
+                "<b>Unit:</b> Ω"
+            )
+        )
+
+        # Info Button - Energy Factor
+        self.ui.toolButton_52.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Energy Factor (k)",
+                "<b>Description:</b> Factor related to tolerable shock energy based on IEEE/CENELEC "
+                "standards.<br>"
+                "<b>Symbol:</b> k<br>"
+                "<b>Range:</b> ~0.116–0.157 As½ (IEEE values)<br>"
+                "<b>Unit:</b> As½"
+            )
+        )
+
+        # Info Button - Body Current Limit
+        self.ui.toolButton_53.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Body Current Limit (IB)",
+                "<b>Description:</b> Threshold current through the human body considered "
+                "tolerable.<br>"
+                "<b>Symbol:</b> IB<br>"
+                "<b>Range:</b> ~0.5–5 A (depends on standards)<br>"
+                "<b>Unit:</b> A"
+            )
+        )
+
+        # Info Button - Body Impedance
+        self.ui.toolButton_54.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Body Impedance (ZT)",
+                "<b>Description:</b> Equivalent impedance of the human body for shock "
+                "calculations.<br>"
+                "<b>Symbol:</b> ZT<br>"
+                "<b>Range:</b> 500–1,000 Ω (typical)<br>"
+                "<b>Unit:</b> Ω"
+            )
+        )
+
+        # Info Button - Heart Factor
+        self.ui.toolButton_55.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Heart Factor (HF)",
+                "<b>Description:</b> Factor considering current path through the heart.<br>"
+                "<b>Symbol:</b> HF<br>"
+                "<b>Range:</b> 0–1 p.u.<br>"
+                "<b>Unit:</b> p.u."
+            )
+        )
+
+        # Info Button - Body Factor
+        self.ui.toolButton_56.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Body Factor (BF)",
+                "<b>Description:</b> Factor considering body contact area and distribution.<br>"
+                "<b>Symbol:</b> BF<br>"
+                "<b>Range:</b> 0–1 p.u.<br>"
+                "<b>Unit:</b> p.u."
+            )
+        )
+
+        # Info Button - Constant F
+        self.ui.toolButton_57.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Constant F",
+                "<b>Description:</b> Safety standard constant used in CENELEC EN 50522.<br>"
+                "<b>Symbol:</b> F<br>"
+                "<b>Range:</b> 0–1 p.u.<br>"
+                "<b>Unit:</b> p.u."
+            )
+        )
+
+        # Info Button - Voltage Limit
+        self.ui.toolButton_58.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Voltage Limit (Vlim)",
+                "<b>Description:</b> Maximum permissible touch voltage according to standard.<br>"
+                "<b>Symbol:</b> Vlim<br>"
+                "<b>Range:</b> 50–430 V (depends on fault duration and standard)<br>"
+                "<b>Unit:</b> V"
+            )
+        )
+
+
+        # =========================================================================================
+        # Validation of input Parameters
+        # =========================================================================================
+
         # Validate Resistance of the human body inputs
         validation.setup_live_validation(
             self,

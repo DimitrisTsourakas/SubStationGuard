@@ -10,7 +10,9 @@ class SoilResistivityController(BaseController):
 
         self.parent = parent
 
+        # =========================================================================================
         # Calculate Soil Resistivity through Ground Resistance
+        # =========================================================================================
 
         # Make error labels invisible
         self.ui.label_60.setVisible(False)
@@ -26,6 +28,51 @@ class SoilResistivityController(BaseController):
                 self.ui.label_51, self.ui.label_52, self.ui.lineEdit_23, self.ui.toolButton_49
             ]
         )
+
+        # =========================================================================================
+        # Setup Buttons for parameters extended information
+        # =========================================================================================
+
+        # Info Button - Calculate Soil Resistivity through Ground Resistance
+        self.ui.toolButton_47.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Calculation options of Soil Resistivity",
+            "<b>Description:</b> Determines the way Soil Resistivity is calculated.<br>"
+            "<b>Options:</b>"
+            "<div style='margin-left:20px'><b>Option 1:</b> Calculate the Soil Resistivity (ρ) "
+            "considering the ground Resistance (Rg) and the Geometric proportionality factor (kg) "
+            "using the following calculation algorithm:"
+            "<pre>ρ = Rg / kg</pre></div>"
+            "<div style='margin-left:20px'><b>Option 2:</b> Directly provide a user-defined Soil "
+            "Resistivity (ρ) in Ωm</div>"
+            )
+        )
+
+        # Info Button - Ground Resistance
+        self.ui.toolButton_48.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Ground Resistance (Rg)",
+            "<b>Description:</b> Resistance of the grounding electrode system in Ω.<br>"
+            "<b>Symbol:</b> Rg<br>"
+            "<b>Range:</b> typically 0.5-20 Ω<br>"
+            "<b>Unit:</b> Ω"
+            )
+        )
+
+        # Info Button - Soil Resistivity
+        self.ui.toolButton_49.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Soil Resistivity (ρ)",
+            "<b>Description:</b> Resistivity of soil in Ωm.<br>"
+            "<b>Symbol:</b> ρ<br>"
+            "<b>Range:</b> typically 10-10000 Ωm<br>"
+            "<b>Unit:</b> Ωm"
+            )
+        )
+
+        # =========================================================================================
+        # Validation of input Parameters
+        # =========================================================================================
 
         # Validate Soil Resistivity inputs 
         validation.setup_live_validation(

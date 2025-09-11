@@ -3,7 +3,6 @@ from .BaseEvaluator import BaseEvaluator
 
 import pyqtgraph as pg
 from PySide6 import QtCore
-import matplotlib.pyplot as plt
 import numpy as np
 import math
 import csv
@@ -12,10 +11,6 @@ import ast
 from scipy.optimize import root_scalar
 from scipy.interpolate import interp1d
 from typing import Callable
-
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
-from PySide6.QtWidgets import QGraphicsScene, QGraphicsView
 
 class SurfacePotentialError(Exception):
     pass
@@ -38,56 +33,66 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         Returns:
             IG (real): Maximum grid current (A)
         """
-        # Logging before applying formula
-        formula = "IG = If * Df * Sf"
-        self.logInfo(f"Starting calculation of {formula}")
-        self.logInfo("Inputs before calculation:")
-        self.logInfo(f"   If: {If}A")
-        self.logInfo(f"   Df: {Df}p.u.")
-        self.logInfo(f"   Sf: {Sf}p.u.")
+        try:
+            # Logging before applying formula
+            formula = "IG = If * Df * Sf"
+            self.logInfo(f"Starting calculation of {formula}")
+            self.logInfo("Inputs before calculation:")
+            self.logInfo(f"   If: {If}A")
+            self.logInfo(f"   Df: {Df}p.u.")
+            self.logInfo(f"   Sf: {Sf}p.u.")
 
-        # Apply formula
-        IG = If * Df * Sf
+            # Apply formula
+            IG = If * Df * Sf
 
-        # Logging after applying formula
-        self.logInfo("Output after calculation:")
-        self.logInfo(f"   IG: {IG}A")
-        self.logInfo(f"Calculation of {formula} finished successfully")
+            # Logging after applying formula
+            self.logInfo("Output after calculation:")
+            self.logInfo(f"   IG: {IG}A")
+            self.logInfo(f"Calculation of {formula} finished successfully")
 
-        return IG
+            return IG
+
+        except Exception as e:
+            self.logError(f"Error while calculating {formula}: {e}")
+            raise
 
     def maxAllowM2MTouchVoltLimit(self, ts: float, k: float, Rb: float) -> float:
         """ Calucates the maximum allowable metal-to-metal touch voltage limit (EmmTouch) considering
         duration of the electric shock current (ts), a factor related to tolerable electric shock 
-        energy (k) taking values of 0.116 and 0.157 As^0.5 for people weighing 50 kg and 70 kg, 
+        energy (k) taking values of 0.116 and 0.157 As½ for people weighing 50 kg and 70 kg, 
         respectively and resistance of the human body (Rb).
         Formula: EmmTouch = Rb * k / √ts
 
         Arguments:
             ts (real): Duration of the electric shock current (s)
-            k (real): Factor related to tolerable electric shock energy (As^0.5)
+            k (real): Factor related to tolerable electric shock energy (As½)
             Rb (real): Resistance of the human body (Ω)
         
         Returns:
             EmmTouch (real): Maximum allowable metal-to-metal touch voltage limit (V)
         """
-        # Logging before applying formula
-        formula = "EmmTouch = Rb * k / √ts"
-        self.logInfo(f"Starting calculation of {formula}")
-        self.logInfo("Inputs before calculation:")
-        self.logInfo(f"   Rb: {Rb}Ω")
-        self.logInfo(f"   k: {k}As^0.5")
-        self.logInfo(f"   ts: {ts}s")
+        try:
+            # Logging before applying formula
+            formula = "EmmTouch = Rb * k / √ts"
+            self.logInfo(f"Starting calculation of {formula}")
+            self.logInfo("Inputs before calculation:")
+            self.logInfo(f"   Rb: {Rb}Ω")
+            self.logInfo(f"   k: {k}As½")
+            self.logInfo(f"   ts: {ts}s")
 
-        # Apply formula 
-        EmmTouch = Rb * k / pow(ts, 0.5)
+            # Apply formula 
+            EmmTouch = Rb * k / pow(ts, 0.5)
 
-        # Logging after applying formula
-        self.logInfo("Output after calculation:")
-        self.logInfo(f"   EmmTouch: {EmmTouch}V")
-        self.logInfo(f"Calculation of {formula} finished successfully")
+            # Logging after applying formula
+            self.logInfo("Output after calculation:")
+            self.logInfo(f"   EmmTouch: {EmmTouch}V")
+            self.logInfo(f"Calculation of {formula} finished successfully")
 
-        return EmmTouch
+            return EmmTouch
+
+        except Exception as e:
+            self.logError(f"Error while calculating {formula}: {e}")
+            raise
 
     def groundPotentialRise(self, IG: float, kg: float, ρ: float) -> float:
         """ Calculates the ground potential rise (GPR) considering maximum grid current (IG), geometric
@@ -97,29 +102,34 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         
         Arguments:
             IG (real): Maximum grid current (A)
-            kg (real): Geometric proportionality factor (m^-1)
+            kg (real): Geometric proportionality factor (m⁻¹)
             ρ (real): Soil resistivity (Ωm)
         
         Returns:
             GPR (real): Ground potential rise (V)
         """
-        # Logging before applying formula
-        formula = "GPR = IG * kg * ρ"
-        self.logInfo(f"Starting calculation of {formula}")
-        self.logInfo("Inputs before calculation:")
-        self.logInfo(f"   IG: {IG}A")
-        self.logInfo(f"   kg: {kg}m^-1")
-        self.logInfo(f"   ρ: {ρ}Ωm")
+        try:
+            # Logging before applying formula
+            formula = "GPR = IG * kg * ρ"
+            self.logInfo(f"Starting calculation of {formula}")
+            self.logInfo("Inputs before calculation:")
+            self.logInfo(f"   IG: {IG}A")
+            self.logInfo(f"   kg: {kg}m⁻¹")
+            self.logInfo(f"   ρ: {ρ}Ωm")
 
-        # Apply formula
-        GPR = IG * kg * ρ
+            # Apply formula
+            GPR = IG * kg * ρ
 
-        # Logging after applying formula
-        self.logInfo("Output after calculation:")
-        self.logInfo(f"   GPR: {GPR}V")
-        self.logInfo(f"Calculation of {formula} finished successfully")
+            # Logging after applying formula
+            self.logInfo("Output after calculation:")
+            self.logInfo(f"   GPR: {GPR}V")
+            self.logInfo(f"Calculation of {formula} finished successfully")
 
-        return GPR
+            return GPR
+
+        except Exception as e:
+            self.logError(f"Error while calculating {formula}: {e}")
+            raise
 
     def inverseFunc(self, function: Callable[[float], float], value: float) -> float:
         """ Define a function that returns the root of f(x) - value = 0
@@ -131,30 +141,35 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         Returns: 
             Inversed value (real) 
         """
-        # Check if function came from CSV interpolation
-        if getattr(function, "_is_interpolated", False):
-            xs, ys = function._xs, function._ys
+        try:
+            # Check if function came from CSV interpolation
+            if getattr(function, "_is_interpolated", False):
+                xs, ys = function._xs, function._ys
 
-            if not (min(ys) <= value <= max(ys)):
-                self.logError(f"Value {value} outside interpolated ksp(x) range [{min(ys)}, {max(ys)}]")
-                raise ValueError(f"Value {value} outside interpolated ksp(x) range [{min(ys)}, {max(ys)}]")
-            inverse_interp = interp1d(ys, xs, fill_value="extrapolate", bounds_error=False)
-            return float(inverse_interp(value))
+                if not (min(ys) <= value <= max(ys)):
+                    self.logError(f"Value {value} outside interpolated ksp(x) range [{min(ys)}, {max(ys)}]")
+                    raise ValueError(f"Value {value} outside interpolated ksp(x) range [{min(ys)}, {max(ys)}]")
+                inverse_interp = interp1d(ys, xs, fill_value="extrapolate", bounds_error=False)
+                return float(inverse_interp(value))
 
-        # Otherwise use root_scalar for user-defined formula
-        def f(x): return function(x) - value
-        a, b = 0.01, 10000
+            # Otherwise use root_scalar for user-defined formula
+            def f(x): return function(x) - value
+            a, b = 0.00001, 10000
 
-        # Precheck: is there a root in bracket?
-        if f(a) * f(b) > 0:
-            self.logError(f"No root: f({a})={f(a):.4f}, f({b})={f(b):.4f} have same sign.")
-            raise ValueError(f"No root: f({a})={f(a):.4f}, f({b})={f(b):.4f} have same sign.")
-        
-        result = root_scalar(f, bracket=[a, b], method='brentq')
-        if not result.converged:
-            self.logError("Root-finding did not converge.")
-            raise RuntimeError("Root-finding did not converge.")
-        return result.root
+            # Precheck: is there a root in bracket?
+            if f(a) * f(b) > 0:
+                self.logError(f"No root: f({a})={f(a):.4f}, f({b})={f(b):.4f} have same sign.")
+                raise ValueError(f"No root: f({a})={f(a):.4f}, f({b})={f(b):.4f} have same sign.")
+            
+            result = root_scalar(f, bracket=[a, b], method='brentq')
+            if not result.converged:
+                self.logError("Root-finding did not converge.")
+                raise RuntimeError("Root-finding did not converge.")
+            return result.root
+
+        except Exception as e:
+            self.logError(f"Error while inversing function {function}: {e}")
+            raise
 
     def criticalSeparationDistance(self, systemType: str, safetyStandard: int, GPR: float, Rb: float,
                                      k: float, ts: float, ksp: Callable[[float], float], IB: float,
@@ -163,14 +178,14 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         potential proportionality factor, ground potential rise (GPR) and max allowable touch 
         voltage (V). Maximum voltage is calculated according to the type of the System and the 
         Safety Standard applied. 
-        Formula: xcr = ksp-1(V / GPR)
+        Formula: xcr = ksp⁻¹(V / GPR)
 
         Arguments:
             systemType (string): System Type of MV/LV substation
             safetyStandard (string): Safety Standard applied
-            GPR (real): Ground potential rise (A m^-1 Ω)
+            GPR (real): Ground potential rise (A m⁻¹ Ω)
             Rb (real): Resistance of the human body (Ω)
-            k (real): Factor related to tolerable electric shock energy (As^0.5)
+            k (real): Factor related to tolerable electric shock energy (As½)
             ts (real): Duration of the electric shock current (s)
             Rb (real): Resistance of the human body (Ω)
             IB (real): Body current limit (A)
@@ -194,7 +209,7 @@ class SeparationDistanceEvaluator(BaseEvaluator):
             EmmTouch = self.maxAllowM2MTouchVoltLimit(ts, k, Rb)
 
             # Logging before applying formula
-            formula = "xcr = ksp-1(EmmTouch / GPR)"
+            formula = "xcr = ksp⁻¹(EmmTouch / GPR)"
             self.logInfo(f"Starting calculation of {formula}")
             self.logInfo("Inputs before calculation:")
             self.logInfo(f"   EmmTouch: {EmmTouch}V")
@@ -209,7 +224,7 @@ class SeparationDistanceEvaluator(BaseEvaluator):
             UTp = self.allowableTouchVoltage(IB, ZT, HF, BF)
             
             # Logging before applying formula
-            formula = "xcr = ksp-1(UTp * F / GPR)"
+            formula = "xcr = ksp⁻¹(UTp * F / GPR)"
             self.logInfo(f"Starting calculation of {formula}")
             self.logInfo("Inputs before calculation:")
             self.logInfo(f"   UTp: {UTp}V")
@@ -222,7 +237,7 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         # Critical Seperation Distance Evaluation for System Type "TT" and Safety Standard "CENELEC EN 50522"
         else:
             # Logging before applying formula
-            formula = "xcr = ksp-1(Vlim / GPR)"
+            formula = "xcr = ksp⁻¹(Vlim / GPR)"
             self.logInfo(f"Starting calculation of {formula}")
             self.logInfo("Inputs before calculation:")
             self.logInfo(f"   Vlim: {Vlim}V")
@@ -254,24 +269,29 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         Returns:
             UTp (real): Allowable Touch Voltage (V)
         """
-        # Logging before applying formula
-        formula = "UTp = IB * ZT * BF / HF"
-        self.logInfo(f"Starting calculation of {formula}")
-        self.logInfo("Inputs before calculation:")
-        self.logInfo(f"   IB: {IB}A")
-        self.logInfo(f"   ZT: {ZT}Ω")
-        self.logInfo(f"   BF: {BF}p.u.")
-        self.logInfo(f"   HF: {HF}p.u.")
+        try:
+            # Logging before applying formula
+            formula = "UTp = IB * ZT * BF / HF"
+            self.logInfo(f"Starting calculation of {formula}")
+            self.logInfo("Inputs before calculation:")
+            self.logInfo(f"   IB: {IB}A")
+            self.logInfo(f"   ZT: {ZT}Ω")
+            self.logInfo(f"   BF: {BF}p.u.")
+            self.logInfo(f"   HF: {HF}p.u.")
 
-        # Apply formula
-        UTp = IB * ZT * BF / HF
-        
-        # Logging after applying formula
-        self.logInfo("Output after calculation:")
-        self.logInfo(f"   UTp: {UTp}V")
-        self.logInfo(f"Calculation of {formula} finished successfully")
+            # Apply formula
+            UTp = IB * ZT * BF / HF
+            
+            # Logging after applying formula
+            self.logInfo("Output after calculation:")
+            self.logInfo(f"   UTp: {UTp}V")
+            self.logInfo(f"Calculation of {formula} finished successfully")
 
-        return UTp
+            return UTp
+
+        except Exception as e:
+            self.logError(f"Error while calculating {formula}: {e}")
+            raise
 
     def soilResistivity(self, Rg: float, kg: float) -> float:
         """ Calculates the soil Resistivity considering the ground Resistance (Rg) and the Geometric
@@ -280,27 +300,32 @@ class SeparationDistanceEvaluator(BaseEvaluator):
 
         Arguments: 
             Rg (real): Ground Resistance (Ω)
-            kg (real): Geometric proportionality factor (m^-1)
+            kg (real): Geometric proportionality factor (m⁻¹)
 
         Returns
             ρ (real): Soil resistivity (Ωm)
         """
-        # Logging before applying formula
-        formula = "ρ = Rg / kg"
-        self.logInfo(f"Starting calculation of {formula}")
-        self.logInfo("Inputs before calculation:")
-        self.logInfo(f"   Rg: {Rg}Ω")
-        self.logInfo(f"   kg: {kg}m^-1")
-        
-        # Apply formula
-        ρ = Rg / kg
+        try:
+            # Logging before applying formula
+            formula = "ρ = Rg / kg"
+            self.logInfo(f"Starting calculation of {formula}")
+            self.logInfo("Inputs before calculation:")
+            self.logInfo(f"   Rg: {Rg}Ω")
+            self.logInfo(f"   kg: {kg}m⁻¹")
+            
+            # Apply formula
+            ρ = Rg / kg
 
-        # Logging after applying formula
-        self.logInfo("Output after calculation:")
-        self.logInfo(f"   ρ: {ρ}Ωm")
-        self.logInfo(f"Calculation of {formula} finished successfully")
+            # Logging after applying formula
+            self.logInfo("Output after calculation:")
+            self.logInfo(f"   ρ: {ρ}Ωm")
+            self.logInfo(f"Calculation of {formula} finished successfully")
 
-        return ρ
+            return ρ
+
+        except Exception as e:
+            self.logError(f"Error while calculating {formula}: {e}")
+            raise
 
     def decrementFactor(self, X: float, R: float, tf: float) -> float:
         """ Calculates the Decrement Factor accounting for the dc offset of the fault current 
@@ -316,37 +341,42 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         Returns
             Df (real): Decrement Factor (p.u.)
         """
-        # Logging before applying formula
-        formula1 = "Ta = X / (2 * math.pi * 60 * R)"
-        self.logInfo(f"Starting calculation of {formula1}")
-        self.logInfo("Inputs before calculation:")
-        self.logInfo(f"   X: {X}Ω")
-        self.logInfo(f"   R: {R}Ω")
+        try:
+            # Logging before applying formula
+            formula1 = "Ta = X / (2 * math.pi * 60 * R)"
+            self.logInfo(f"Starting calculation of {formula1}")
+            self.logInfo("Inputs before calculation:")
+            self.logInfo(f"   X: {X}Ω")
+            self.logInfo(f"   R: {R}Ω")
 
-        # Apply formula
-        Ta = X / (2 * math.pi * 60 * R)
+            # Apply formula
+            Ta = X / (2 * math.pi * 60 * R)
 
-        # Logging after applying formula
-        self.logInfo("Output after calculation:")
-        self.logInfo(f"   Ta: {Ta}s")
-        self.logInfo(f"Calculation of {formula1} finished successfully")
+            # Logging after applying formula
+            self.logInfo("Output after calculation:")
+            self.logInfo(f"   Ta: {Ta}s")
+            self.logInfo(f"Calculation of {formula1} finished successfully")
 
-        # Logging before applying formula
-        formula2 = "Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf )"
-        self.logInfo(f"Starting calculation of {formula2}")
-        self.logInfo("Inputs before calculation:")
-        self.logInfo(f"   Ta: {Ta}s")
-        self.logInfo(f"   tf: {tf}s")
-        
-        # Apply formula
-        Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf)
+            # Logging before applying formula
+            formula2 = "Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf )"
+            self.logInfo(f"Starting calculation of {formula2}")
+            self.logInfo("Inputs before calculation:")
+            self.logInfo(f"   Ta: {Ta}s")
+            self.logInfo(f"   tf: {tf}s")
+            
+            # Apply formula
+            Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf)
 
-        # Logging after applying formula
-        self.logInfo("Output after calculation:")
-        self.logInfo(f"   Df: {Df}p.u.")
-        self.logInfo(f"Calculation of {formula2} finished successfully")
+            # Logging after applying formula
+            self.logInfo("Output after calculation:")
+            self.logInfo(f"   Df: {Df}p.u.")
+            self.logInfo(f"Calculation of {formula2} finished successfully")
 
-        return Df
+            return Df
+
+        except Exception as e:
+            self.logError(f"Error while calculating {formula1} and {formula2}: {e}")
+            raise
 
     def createSurfacePotentialFunc(self, option: int, source: str) -> Callable[[float], float]:
         """
@@ -443,12 +473,12 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         Arguments:
             systemType (string): System Type of MV/LV substation
             safetyStandard (string): Safety Standard applied
-            kg (real): Geometric proportionality factor (m^-1)
+            kg (real): Geometric proportionality factor (m⁻¹)
             ksp(x) (lambda function): surface potential proportionality factor expressed as a function
                     of separation distance, x (m), accounting for the effect of grounding system
                     geometry on Vsp
             Rb (real): Resistance of the human body (Ω)
-            k (real): Factor related to tolerable electric shock energy (As^0.5)
+            k (real): Factor related to tolerable electric shock energy (As½)
             IB (real): Body current limit (A)
             ZT (real): Body impedance (Ω)
             HF (real): Heart current factor (p.u.)
@@ -504,7 +534,7 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         
         # Plot Parameters Setup for System Type "TN" and Safety Standard "IEEE Std 80"
         if systemType == "TN" and safetyStandard == 0:
-            yLabel = "IG · √tf · ρ (A s^0.5 Ω m)"
+            yLabel = "IG · √tf · ρ (A s½ Ω m)"
             formulaLabel = "IG · √tf · ρ = Rb k / (ksp(x) · kg)"
             formula = lambda x: Rb * k / (ksp(x) * kg) if x > 0 else 0
         

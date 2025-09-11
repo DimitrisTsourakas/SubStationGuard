@@ -140,6 +140,8 @@ class Ui_MainWindow(object):
         self.actionShow_Plot.setChecked(True)
         self.actionSave_Plot = QAction(MainWindow)
         self.actionSave_Plot.setObjectName(u"actionSave_Plot")
+        self.actionDocumentation = QAction(MainWindow)
+        self.actionDocumentation.setObjectName(u"actionDocumentation")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_2 = QGridLayout(self.centralwidget)
@@ -1430,8 +1432,8 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
         self.menuFile.addAction(self.actionImport_Parameters)
         self.menuFile.addAction(self.actionExport_Parameters)
-        self.menuFile.addAction(self.actionSave_Plot)
         self.menuHelp.addSeparator()
+        self.menuHelp.addAction(self.actionDocumentation)
         self.menuView.addAction(self.actionShow_Logs)
         self.menuView.addAction(self.actionShow_Parameters)
         self.menuView.addAction(self.actionShow_Plot)
@@ -1454,6 +1456,7 @@ class Ui_MainWindow(object):
         self.actionShow_Parameters.setText(QCoreApplication.translate("MainWindow", u"Show Parameters", None))
         self.actionShow_Plot.setText(QCoreApplication.translate("MainWindow", u"Show Plot", None))
         self.actionSave_Plot.setText(QCoreApplication.translate("MainWindow", u"Save Plot...", None))
+        self.actionDocumentation.setText(QCoreApplication.translate("MainWindow", u"Documentation", None))
         self.plainTextEdit.setPlainText("")
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"Execution Logs", None))
         self.groupBox_9.setTitle("")
@@ -1480,12 +1483,12 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:700; font-style:normal; text-decoration: underline;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Geometric proportionality factor<span style=\" text-decoration:none;\">                                   </span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
-        self.lineEdit_32.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'kg', Unit of Measurement: 'm^-1')", None))
+        self.lineEdit_32.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'kg', Unit of Measurement: 'm\u207b\u00b9')", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         self.label_82.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
-        self.label_82.setText(QCoreApplication.translate("MainWindow", u"m^-1", None))
+        self.label_82.setText(QCoreApplication.translate("MainWindow", u"m\u207b\u00b9", None))
         self.label_102.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_83.setText(QCoreApplication.translate("MainWindow", u"Surface potential proportionality factor", None))
 #if QT_CONFIG(tooltip)
@@ -1617,7 +1620,7 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:700; font-style:normal; text-decoration: underline;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Resistance of the human body<span style=\" text-decoration:none;\">                                              </span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Body Resistance<span style=\" text-decoration:none;\">                                                                               </span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_13.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'Rb', Unit of Measurement: '\u03a9')", None))
 #endif // QT_CONFIG(tooltip)
@@ -1633,14 +1636,14 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:700; font-style:normal; text-decoration: underline;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Factor related to tolerable electric shock energy<span style=\" text-decoration:none;\">                   </span></p></body></html>", None))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Energy Factor<span style=\" text-decoration:none;\">                                                       </span></p></body></html>", None))
 #if QT_CONFIG(tooltip)
-        self.lineEdit_14.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'k', Unit of Measurement: 'A\u221as')", None))
+        self.lineEdit_14.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'k', Unit of Measurement: 'As\u00bd')", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         self.label_57.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
 #endif // QT_CONFIG(tooltip)
-        self.label_57.setText(QCoreApplication.translate("MainWindow", u"A\u221as", None))
+        self.label_57.setText(QCoreApplication.translate("MainWindow", u"As\u00bd", None))
         self.label_95.setText(QCoreApplication.translate("MainWindow", u"Error", None))
         self.label_58.setText(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"

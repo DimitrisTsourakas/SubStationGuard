@@ -10,6 +10,7 @@ from PySide6.QtWidgets import QFileDialog, QMessageBox
 from evaluators.SeparationDistanceEvaluator import SeparationDistanceEvaluator
 from dataclasses import asdict
 import json
+import webbrowser
 
 class SeparationDistanceController(BaseController):
     def __init__(self, parent=None):
@@ -28,6 +29,7 @@ class SeparationDistanceController(BaseController):
         self.ui.actionShow_Plot.toggled.connect(self.ui.graphicsView.setVisible)
         self.ui.actionImport_Parameters.triggered.connect(self.importParameters)
         self.ui.actionExport_Parameters.triggered.connect(self.exportParameters)
+        self.ui.actionDocumentation.triggered.connect(self.openDocumentation)
 
     def extractAllParameters(self) -> SeparationDistanceData:
         params = {
@@ -132,4 +134,10 @@ class SeparationDistanceController(BaseController):
             self.ui.lineEdit_33.setText(str(data.get("surfacePotentialFunc", "")))     # ksp(x) (function)
 
         # Results (optional)
-        self.ui.lineEdit_28.setText(str(data.get("maxGridCurrent", "")))              # IG (A)
+        self.ui.lineEdit_28.setText(str(data.get("maxGridCurrent", "")))              # IG (A)\
+        
+
+    def openDocumentation(self):
+        """Open the online documentation (GitHub README)."""
+        url = "https://github.com/DimitrisTsourakas/Safety-performance-evaluation-of-typical-grounding-configurations-of-MV-LV-distributionsubstations/blob/main/README.md"
+        webbrowser.open(url)

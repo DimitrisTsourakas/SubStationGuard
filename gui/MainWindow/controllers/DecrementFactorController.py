@@ -10,7 +10,9 @@ class DecrementFactorController(BaseController):
 
         self.parent = parent
 
+        # =========================================================================================
         # Calculate Decrement Factor according to IEEE Std 80
+        # =========================================================================================
 
         # Make error labels invisible
         self.ui.label_62.setVisible(False)
@@ -28,7 +30,69 @@ class DecrementFactorController(BaseController):
                 self.ui.label_78, self.ui.label_79, self.ui.lineEdit_38, self.ui.toolButton_62
             ]
         )
+
+        # =========================================================================================
+        # Setup Buttons for parameters extended information
+        # =========================================================================================
         
+        # Info Button - Calculate Decrement Factor according to IEEE Std 80
+        self.ui.toolButton_59.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Calculation options of Decrement Factor",
+            "<b>Description:</b> Determines the way Decrement Factor is calculated.<br>"
+            "<b>Options:</b>"
+            "<div style='margin-left:20px'><b>Option 1:</b> Calculate the Decrement Factor (Df) "
+            "considering the ratio of Inductive Reactance (X) with System Resistance at fault (R) "
+            "and the Fault duration (tf) using the following calculation algorithm:<br>"
+            "<pre>Ta = X / (2 · π · 60 · R)</pre>"
+            "<pre>Df = √(1 + (Ta/tf) · (1 - exp(-2 · tf / Ta)))</pre><br></div>"
+            "<div style='margin-left:20px'><b>Option 2:</b> Directly provide a user-defined "
+            "Decrement Factor (Df) in p.u.</div>"
+            )
+        )
+
+        # Info Button - Inductive Reactance
+        self.ui.toolButton_60.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Inductive Reactance (X)",
+            "<b>Description:</b> The Inductive Reactance at the fault location in Ω.<br>"
+            "Used to calculate the Decrement Factor accounting for the dc offset of the fault "
+            "current.<br>"
+            "<b>Symbol:</b> X<br>"
+            "<b>Range:</b> Depends on line; typically 0.1-10 Ω<br>"
+            "<b>Unit:</b> Ω"
+            )
+        )
+
+        # Info Button - System Resistance at fault
+        self.ui.toolButton_61.clicked.connect(
+        lambda: self.showParameterInfo(
+            "System Resistance at fault (R)",
+            "<b>Description:</b> The System Resistance at the fault location in Ω.<br>"
+            "Used to calculate the Decrement Factor accounting for the dc offset of the fault "
+            "current.<br>"
+            "<b>Symbol:</b> R<br>"
+            "<b>Range:</b> Depends on line; typically 0.1-10 Ω<br>"
+            "<b>Unit:</b> Ω"
+            )
+        )
+
+        # Info Button - Decrement Factor
+        self.ui.toolButton_62.clicked.connect(
+        lambda: self.showParameterInfo(
+            "Decrement Factor (p.u.)",
+            "<b>Description:</b> Factor that accounts for asymmetrical fault current's dc offset"
+            "and decay.<br>"
+            "<b>Symbol:</b> Df<br>"
+            "<b>Range:</b> typically 0.8-1.0 p.u.<br>"
+            "<b>Unit:</b> p.u."
+            )
+        )
+        
+        # =========================================================================================
+        # Validation of input Parameters
+        # =========================================================================================
+
         # Validate Inductive Reactance inputs
         validation.setup_live_validation(
             self,

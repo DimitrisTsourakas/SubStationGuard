@@ -1,5 +1,8 @@
 from PySide6.QtCore import QObject
 from PySide6.QtCore import QEvent
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QMessageBox
+from PySide6.QtGui import QIcon
 
 class BaseController(QObject):
     def __init__(self, parent=None):
@@ -24,6 +27,13 @@ class BaseController(QObject):
             w.setVisible(False)
 
     def toggle_widgets(self, condition, widgets_show, widgets_hide):
+        """ Function that shows or hides widgets based on the provided condition
+
+        Arguments:
+            condition (boolean): A boolean condition based on which show or hide will be preferred
+            widgets_show (1d array): List of the widgets to show on condition
+            widgets_hide (1d array): List of the widgets to hide on condition
+        """
         if condition:
             self.show_widgets(widgets_show)
             self.hide_widgets(widgets_hide)
@@ -134,3 +144,21 @@ class BaseController(QObject):
                 error_label.clear()
                 error_label.setVisible(False)
         return super().eventFilter(watched, event)
+
+    def showParameterInfo(self, title: str, message: str):
+        """ Function that generates a modal info dialog for display of parameters extended 
+        information.
+
+        Arguments:
+            title (str): Title of the modal info dialog
+            message (str): Message of the modal info dialog
+        """
+        box = QMessageBox(None)
+        box.setWindowTitle(title)
+        box.setTextFormat(Qt.RichText)
+        box.setText(message)
+        box.setStandardButtons(QMessageBox.Ok)
+        box.setIcon(QMessageBox.Information)
+        icon = QIcon(":/images/images/SubStationGuard.png")
+        box.setWindowIcon(icon)
+        box.exec()

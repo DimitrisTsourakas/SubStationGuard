@@ -11,7 +11,9 @@ class SystemTypeController(BaseController):
 
         self.parent = parent
 
+        # =========================================================================================
         # System Type of MV/LV Substation
+        # =========================================================================================
 
         # Make error labels invisible
         self.ui.label_100.setVisible(False)
@@ -31,7 +33,71 @@ class SystemTypeController(BaseController):
 
         # Connect button with browseFile function
         self.ui.pushButton.clicked.connect(self.browseFile)
+
+        # =========================================================================================
+        # Setup Buttons for parameters extended information
+        # =========================================================================================
+
+        # Info Button - System Type of MV/LV Substation
+        self.ui.toolButton_63.clicked.connect(
+            lambda: self.showParameterInfo(
+                "System Type of MV/LV Substation",
+                "<b>Description:</b> Defines the grounding system type.<br>"
+                "<b>Options:</b>"
+                "<div style='margin-left:20px'><b>TN:</b> Direct neutral-to-earth connection.</div>"
+                "<div style='margin-left:20px'><b>TT:</b> Neutral grounded independently of "
+                "consumer installation.</div>"
+                "<b>Symbol:</b> systemType<br>"
+                "<b>Values:</b> TN or TT<br>"
+                "<b>Unit:</b> N/A"
+            )
+        )
         
+        # Info Button - Geometric Proportionality Factor
+        self.ui.toolButton_64.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Geometric Proportionality Factor (kg)",
+                "<b>Description:</b> Factor related to grounding system geometry, used in "
+                "resistivity and voltage calculations.<br>"
+                "<b>Symbol:</b> kg<br>"
+                "<b>Range:</b> ~0.1–10 m⁻¹ (depends on geometry)<br>"
+                "<b>Unit:</b> m⁻¹"
+            )
+        )
+
+        # Info Button - Surface Potential Proportionality Function
+        self.ui.toolButton_65.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Surface Potential Proportionality Function (ksp(x))",
+                "<b>Description:</b> Function describing the surface potential proportionality "
+                "factor as a function of distance x, capturing the effect of geometry.<br>"
+                "<b>Options:</b>"
+                "<div style='margin-left:20px'><b>Data Points CSV File:</b> Function via a csv "
+                "with data points. (Interpolation is used for points that are not included in the "
+                "file.</div>"
+                "<div style='margin-left:20px'><b>Custom Mathematical Expression:</b> Function via "
+                "a customized mathematical expression of x.</div>"
+                "<b>Symbol:</b> ksp(x)<br>"
+                "<b>Values:</b> CSV points or mathematical expression<br>"
+                "<b>Unit:</b> p.u."
+            )
+        )
+
+        # Info Button - Fault Duration
+        self.ui.toolButton_66.clicked.connect(
+            lambda: self.showParameterInfo(
+                "Fault Duration (tf)",
+                "<b>Description:</b> Time duration of fault before clearance.<br>"
+                "<b>Symbol:</b> tf<br>"
+                "<b>Range:</b> 0.1–10 s (system dependent)<br>"
+                "<b>Unit:</b> s"
+            )
+        )
+
+        # =========================================================================================
+        # Validation of input Parameters
+        # =========================================================================================
+
         # Validate Geometric proportionality factor inputs
         validation.setup_live_validation(
             self,
