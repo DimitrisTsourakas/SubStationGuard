@@ -139,5 +139,5 @@ class SeparationDistanceController(BaseController):
 
     def openDocumentation(self):
         """Open the online documentation (GitHub README)."""
-        url = "https://github.com/DimitrisTsourakas/Safety-performance-evaluation-of-typical-grounding-configurations-of-MV-LV-distributionsubstations/blob/main/README.md"
+        url = "https://github.com/DimitrisTsourakas/SubStationGuard/blob/main/README.md"
         webbrowser.open(url)
