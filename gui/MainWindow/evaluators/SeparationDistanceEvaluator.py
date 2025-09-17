@@ -154,7 +154,7 @@ class SeparationDistanceEvaluator(BaseEvaluator):
 
             # Otherwise use root_scalar for user-defined formula
             def f(x): return function(x) - value
-            a, b = 0.00001, 10000
+            a, b = 0.00001, 1000000000
 
             # Precheck: is there a root in bracket?
             if f(a) * f(b) > 0:
