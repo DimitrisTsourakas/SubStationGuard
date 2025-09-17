@@ -7,8 +7,10 @@ from .DecrementFactorController import DecrementFactorController
 from data.SeparationDistanceData import SeparationDistanceData
 from PySide6.QtGui import QTextCursor, QTextCharFormat, QColor
 from PySide6.QtWidgets import QFileDialog, QMessageBox
+from PySide6.QtCore import Qt
 from evaluators.SeparationDistanceEvaluator import SeparationDistanceEvaluator
 from dataclasses import asdict
+from info import APP_NAME, APP_VERSION, APP_COMPANY, APP_COPYRIGHT, APP_GITHUB
 import json
 import webbrowser
 
@@ -30,6 +32,7 @@ class SeparationDistanceController(BaseController):
         self.ui.actionImport_Parameters.triggered.connect(self.importParameters)
         self.ui.actionExport_Parameters.triggered.connect(self.exportParameters)
         self.ui.actionDocumentation.triggered.connect(self.openDocumentation)
+        self.ui.actionVersion.triggered.connect(self.openVersion)
 
     def extractAllParameters(self) -> SeparationDistanceData:
         params = {
@@ -139,5 +142,23 @@ class SeparationDistanceController(BaseController):
 
     def openDocumentation(self):
         """Open the online documentation (GitHub README)."""
-        url = "https://github.com/DimitrisTsourakas/SubStationGuard/blob/main/README.md"
+        url = f"{APP_GITHUB}/blob/main/README.md"
         webbrowser.open(url)
+
+    def openVersion(self):
+        """Open a popup window with the version of the application"""
+        box = QMessageBox(self.parent)
+        box.setWindowTitle(f"{APP_NAME} - Version Info")
+        box.setTextFormat(Qt.RichText)
+        box.setIcon(QMessageBox.Information)
+
+        message = (
+            f"<b>{APP_NAME}</b><br>"
+            f"Version: <b>{APP_VERSION}</b><br>"
+            f"Developed by: {APP_COMPANY}<br><br>"
+            f"{APP_COPYRIGHT}"
+        )
+        box.setText(message)
+
+        box.setStandardButtons(QMessageBox.Ok)
+        box.exec()

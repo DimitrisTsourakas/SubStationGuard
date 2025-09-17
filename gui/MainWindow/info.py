@@ -1,0 +1,5 @@
+APP_NAME = "SubStationGuard"
+APP_VERSION = "1.0.0"
+APP_COMPANY = "AUTH"
+APP_COPYRIGHT = "© 2025 Aristotle University of Thessaloniki. All rights reserved."
+APP_GITHUB = "https://github.com/DimitrisTsourakas/SubStationGuard"

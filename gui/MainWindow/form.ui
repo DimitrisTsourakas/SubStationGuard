@@ -3013,6 +3013,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </property>
     <addaction name="separator"/>
     <addaction name="actionDocumentation"/>
+    <addaction name="actionVersion"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -3079,6 +3080,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <action name="actionDocumentation">
    <property name="text">
     <string>Documentation</string>
+   </property>
+  </action>
+  <action name="actionVersion">
+   <property name="text">
+    <string>Version</string>
    </property>
   </action>
  </widget>
