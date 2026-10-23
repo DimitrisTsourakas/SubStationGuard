@@ -104,6 +104,10 @@ where:
 - ksp(x) = surface potential proportionality factor expressed as a function of separation distance, x (m), accounting for the effect of grounding system geometry on Vsp
 - xcr = Critical Separation Distance (m)
 
+
+![SubStationGuard Application Logic Flowchart](assets/SubStationGuard%20Application%20Logic%20Flowchart.png)
+
+
 ---
 
 ## 🚀 Installation
