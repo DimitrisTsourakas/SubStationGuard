@@ -552,7 +552,16 @@ class SeparationDistanceEvaluator(BaseEvaluator):
 
         title = "Critical separation distance between MV/LV substation and LV neutral grounding configurations"
         xLabel = "Separation Distance, x (m)"
-        x_values = np.linspace(0, 500, 1000000)
+
+        # Case to be evaluated and be shown in the Plot
+        # Calculate Ground Potential Rise
+        GPR = self.groundPotentialRise(IG, kg, ρ)
+
+        # Calcualte Critical Separation Distance
+        x_critical = self.criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, tf, ksp, IB, ZT, HF, BF, F, Vlim)
+
+        # Define the x values to be shown in the grid based on the x_critical and give some room
+        x_values = np.linspace(0, x_critical * 5, 1000000)
         y_values = [formula(x) for x in x_values]
 
         plotWidget.clear()
@@ -567,12 +576,7 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         # Plot the curve
         plotWidget.plot(x_values, y_values, pen=pg.mkPen('b', width=2))
 
-        # Case to be evaluated and be shown in the Plot
-        # Calculate Ground Potential Rise
-        GPR = self.groundPotentialRise(IG, kg, ρ)
-
-        # Calcualte Critical Separation Distance
-        x_critical = self.criticalSeparationDistance(systemType, safetyStandard, GPR, Rb, k, tf, ksp, IB, ZT, HF, BF, F, Vlim)
+        
 
         # Set the evaluation point to highlight
         highlight_x = x_critical
