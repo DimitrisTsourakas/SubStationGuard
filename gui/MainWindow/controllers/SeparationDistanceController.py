@@ -117,6 +117,7 @@ class SeparationDistanceController(BaseController):
         self.ui.lineEdit_38.setText(str(data.get("decrementFactor", "")))             # Df (p.u.)
         self.ui.lineEdit_21.setText(str(data.get("faultDivisionFactor", "")))         # Sf (p.u.)
         self.ui.lineEdit_45.setText(str(data.get("inductiveReactance", "")))          # X (Ω)
+        self.ui.lineEdit.setText(str(data.get("systemFrequency", "")))                # f (Hz)
         self.ui.lineEdit_46.setText(str(data.get("resistanceAtFault", "")))           # R (Ω)
         self.ui.lineEdit_34.setText(str(data.get("faultDuration", "")))               # tf (s)
 

@@ -859,6 +859,66 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addLayout(self.gridLayout_17)
 
+        self.gridLayout_34 = QGridLayout()
+        self.gridLayout_34.setObjectName(u"gridLayout_34")
+        self.gridLayout_34.setVerticalSpacing(0)
+        self.label_4 = QLabel(self.groupBox_7)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setEnabled(False)
+        palette1 = QPalette()
+        brush14 = QBrush(QColor(170, 0, 0, 255))
+        brush14.setStyle(Qt.SolidPattern)
+        palette1.setBrush(QPalette.Active, QPalette.WindowText, brush14)
+        palette1.setBrush(QPalette.Active, QPalette.Text, brush14)
+        palette1.setBrush(QPalette.Active, QPalette.ButtonText, brush14)
+        brush15 = QBrush(QColor(170, 0, 0, 128))
+        brush15.setStyle(Qt.SolidPattern)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette.Active, QPalette.PlaceholderText, brush15)
+#endif
+        palette1.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette1.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette1.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush13)
+#endif
+        palette1.setBrush(QPalette.Disabled, QPalette.WindowText, brush14)
+        palette1.setBrush(QPalette.Disabled, QPalette.Text, brush14)
+        palette1.setBrush(QPalette.Disabled, QPalette.ButtonText, brush14)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette1.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush13)
+#endif
+        self.label_4.setPalette(palette1)
+
+        self.gridLayout_34.addWidget(self.label_4, 5, 0, 1, 1)
+
+        self.label_6 = QLabel(self.groupBox_7)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setFont(font)
+
+        self.gridLayout_34.addWidget(self.label_6, 2, 0, 1, 1)
+
+        self.lineEdit = QLineEdit(self.groupBox_7)
+        self.lineEdit.setObjectName(u"lineEdit")
+
+        self.gridLayout_34.addWidget(self.lineEdit, 3, 0, 1, 1)
+
+        self.toolButton = QToolButton(self.groupBox_7)
+        self.toolButton.setObjectName(u"toolButton")
+        self.toolButton.setMaximumSize(QSize(30, 30))
+        self.toolButton.setIcon(icon1)
+        self.toolButton.setIconSize(QSize(40, 40))
+
+        self.gridLayout_34.addWidget(self.toolButton, 2, 1, 1, 1)
+
+        self.label_5 = QLabel(self.groupBox_7)
+        self.label_5.setObjectName(u"label_5")
+
+        self.gridLayout_34.addWidget(self.label_5, 3, 1, 1, 1)
+
+
+        self.verticalLayout_7.addLayout(self.gridLayout_34)
+
         self.gridLayout_18 = QGridLayout()
         self.gridLayout_18.setObjectName(u"gridLayout_18")
         self.gridLayout_18.setVerticalSpacing(0)
@@ -1374,7 +1434,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1280, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1280, 17))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
@@ -1602,6 +1662,15 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.label_77.setText(QCoreApplication.translate("MainWindow", u"\u03a9", None))
         self.label_87.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Error", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"System Frequency", None))
+#if QT_CONFIG(tooltip)
+        self.lineEdit.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'f', Unit of Measurement: 'Hz')", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.label_5.setToolTip(QCoreApplication.translate("MainWindow", u"Unit of Measurement", None))
+#endif // QT_CONFIG(tooltip)
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Hz", None))
         self.label_78.setText(QCoreApplication.translate("MainWindow", u"Decrement Factor", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_38.setToolTip(QCoreApplication.translate("MainWindow", u"(Variable: 'Df', Unit of Measurement: 'p.u.')", None))

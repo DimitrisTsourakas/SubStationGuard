@@ -327,14 +327,15 @@ class SeparationDistanceEvaluator(BaseEvaluator):
             self.logError(f"Error while calculating {formula}: {e}")
             raise
 
-    def decrementFactor(self, X: float, R: float, tf: float) -> float:
+    def decrementFactor(self, X: float, f: float, R: float, tf: float) -> float:
         """ Calculates the Decrement Factor accounting for the dc offset of the fault current 
         considering the X/R ratio and the fault duration (tf)
-        Formula1: Ta = X / (2 * math.pi * 60 * R)
+        Formula1: Ta = X / (2 * math.pi * f * R)
         Formula2: Df = math.sqrt(1 + (Ta * (1 - math.exp(-2 * tf / Ta))) / tf)
 
         Arguments: 
             X (real): Inductive reactance (Ω)
+            f (real): System frequency (Hz)
             R (real): System resistance at fault (Ω)
             tf (real): Fault duration (s)
 
@@ -343,14 +344,15 @@ class SeparationDistanceEvaluator(BaseEvaluator):
         """
         try:
             # Logging before applying formula
-            formula1 = "Ta = X / (2 * math.pi * 60 * R)"
+            formula1 = "Ta = X / (2 * math.pi * f * R)"
             self.logInfo(f"Starting calculation of {formula1}")
             self.logInfo("Inputs before calculation:")
             self.logInfo(f"   X: {X}Ω")
+            self.logInfo(f"   f: {f}Hz")
             self.logInfo(f"   R: {R}Ω")
 
             # Apply formula
-            Ta = X / (2 * math.pi * 60 * R)
+            Ta = X / (2 * math.pi * f * R)
 
             # Logging after applying formula
             self.logInfo("Output after calculation:")
@@ -525,7 +527,8 @@ class SeparationDistanceEvaluator(BaseEvaluator):
             if calcDecrementFactor == 0:
                 X = separationDistanceDataObj.inductiveReactance
                 R = separationDistanceDataObj.resistanceAtFault
-                Df = self.decrementFactor(X, R, tf)
+                f = separationDistanceDataObj.systemFrequency
+                Df = self.decrementFactor(X, f, R, tf)
             else:
                 Df = separationDistanceDataObj.decrementFactor
             IG = self.maxGridCurrent(If, Df, Sf)

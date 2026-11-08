@@ -131,7 +131,8 @@ class BaseController(QObject):
                 widgets = [
                     self.ui.label_74, self.ui.label_75, self.ui.lineEdit_45, self.ui.toolButton_60,
                     self.ui.label_76, self.ui.label_77, self.ui.lineEdit_46, self.ui.toolButton_61,
-                    self.ui.label_78, self.ui.label_79, self.ui.lineEdit_38, self.ui.toolButton_62
+                    self.ui.label_78, self.ui.label_79, self.ui.lineEdit_38, self.ui.toolButton_62,
+                    self.ui.label_6, self.ui.label_5, self.ui.lineEdit, self.ui.toolButton
                 ]
                 self.hide_widgets_on_combo_hide(widgets)
         if hasattr(self, "_validation_targets") and watched in self._validation_targets:

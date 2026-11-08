@@ -20,6 +20,7 @@ class SeparationDistanceData:
     decrementFactor: float = None               # Df (p.u.)
     faultDivisionFactor: float = None           # Sf (p.u.)
     inductiveReactance: Optional[float] = None  # X (Ω)
+    systemFrequency: Optional[float] = None     # f (Hz)
     resistanceAtFault: Optional[float] = None   # R (Ω)
     faultDuration: float = None                 # tf (s)
 

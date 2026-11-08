@@ -15,6 +15,7 @@ class DecrementFactorController(BaseController):
         # =========================================================================================
 
         # Make error labels invisible
+        self.ui.label_4.setVisible(False)
         self.ui.label_62.setVisible(False)
         self.ui.label_87.setVisible(False)
         self.ui.label_88.setVisible(False)
@@ -24,7 +25,8 @@ class DecrementFactorController(BaseController):
             self.ui.comboBox_16,
             show_on_yes = [
                 self.ui.label_74, self.ui.label_75, self.ui.lineEdit_45, self.ui.toolButton_60,
-                self.ui.label_76, self.ui.label_77, self.ui.lineEdit_46, self.ui.toolButton_61
+                self.ui.label_76, self.ui.label_77, self.ui.lineEdit_46, self.ui.toolButton_61,
+                self.ui.label_6, self.ui.label_5, self.ui.lineEdit, self.ui.toolButton
             ],
             show_on_no = [
                 self.ui.label_78, self.ui.label_79, self.ui.lineEdit_38, self.ui.toolButton_62
@@ -42,9 +44,9 @@ class DecrementFactorController(BaseController):
             "<b>Description:</b> Determines the way Decrement Factor is calculated.<br>"
             "<b>Options:</b>"
             "<div style='margin-left:20px'><b>Option 1:</b> Calculate the Decrement Factor (Df) "
-            "considering the ratio of Inductive Reactance (X) with System Resistance at fault (R) "
-            "and the Fault duration (tf) using the following calculation algorithm:<br>"
-            "<pre>Ta = X / (2 · π · 60 · R)</pre>"
+            "considering the ratio of Inductive Reactance (X) with System Resistance at fault (R), "
+            "the system frequency (f) and the Fault duration (tf) using the following calculation algorithm:<br>"
+            "<pre>Ta = X / (2 · π · f · R)</pre>"
             "<pre>Df = √(1 + (Ta/tf) · (1 - exp(-2 · tf / Ta)))</pre><br></div>"
             "<div style='margin-left:20px'><b>Option 2:</b> Directly provide a user-defined "
             "Decrement Factor (Df) in p.u.</div>"
@@ -61,6 +63,19 @@ class DecrementFactorController(BaseController):
             "<b>Symbol:</b> X<br>"
             "<b>Range:</b> Depends on line; typically 0.1-10 Ω<br>"
             "<b>Unit:</b> Ω"
+            )
+        )
+
+        # Info Button - Inductive Reactance
+        self.ui.toolButton.clicked.connect(
+        lambda: self.showParameterInfo(
+            "System Frequency (f)",
+            "<b>Description:</b> The Power System frequency in Hz.<br>"
+            "Used to calculate the Decrement Factor accounting for the dc offset of the fault "
+            "current.<br>"
+            "<b>Symbol:</b> f<br>"
+            "<b>Values:</b> Depends on system; typically 50 or 60 Hz<br>"
+            "<b>Unit:</b> Hz"
             )
         )
 
@@ -105,6 +120,15 @@ class DecrementFactorController(BaseController):
         # Validate System resistance at fault inputs
         validation.setup_live_validation(
             self,
+            line_edit=self.ui.lineEdit,
+            error_label=self.ui.label_4,
+            validator_func=validation.is_valid_number,
+            error_message="Enter a valid number"
+        )
+
+        # Validate System resistance at fault inputs
+        validation.setup_live_validation(
+            self,
             line_edit=self.ui.lineEdit_46,
             error_label=self.ui.label_87,
             validator_func=validation.is_valid_number,
@@ -131,6 +155,7 @@ class DecrementFactorController(BaseController):
         return {
             "calcDecrementFactor": safe_str(self.ui.comboBox_16.currentIndex()),
             "inductiveReactance": safe_float(self.ui.lineEdit_45.text()),
+            "systemFrequency": safe_float(self.ui.lineEdit.text()),
             "resistanceAtFault": safe_float(self.ui.lineEdit_46.text()),
             "decrementFactor": safe_float(self.ui.lineEdit_38.text())
         }
@@ -138,5 +163,6 @@ class DecrementFactorController(BaseController):
     def resetParameters(self):
         self.ui.comboBox_16.setCurrentIndex(0)
         self.ui.lineEdit_45.setText("")
+        self.ui.lineEdit.setText("")
         self.ui.lineEdit_46.setText("")
         self.ui.lineEdit_38.setText("")
